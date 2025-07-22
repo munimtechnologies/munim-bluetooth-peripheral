@@ -1,5 +1,6 @@
 #import "BluetoothPeripheral.h"
 #import <CoreBluetooth/CoreBluetooth.h>
+#import <RCTTypeSafety/RCTConvertHelpers.h>
 
 @interface BluetoothPeripheral () <CBPeripheralManagerDelegate>
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
