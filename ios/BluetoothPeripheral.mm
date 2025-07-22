@@ -22,8 +22,8 @@ RCT_EXPORT_METHOD(startAdvertising:(NSDictionary *)options) {
         // Peripheral manager not ready
         return;
     }
-    NSString *localName = options["localName"];
-    NSArray *serviceUUIDs = options["serviceUUIDs"];
+    NSString *localName = options[@"localName"];
+    NSArray *serviceUUIDs = options[@"serviceUUIDs"];
     NSMutableDictionary *advertisingData = [NSMutableDictionary dictionary];
     if (localName) {
         advertisingData[CBAdvertisementDataLocalNameKey] = localName;
@@ -31,7 +31,7 @@ RCT_EXPORT_METHOD(startAdvertising:(NSDictionary *)options) {
     if (serviceUUIDs) {
         NSMutableArray *uuids = [NSMutableArray array];
         for (NSString *uuidStr in serviceUUIDs) {
-            [uuids addObject:[[CBUUID alloc] initWithString:uuidStr]];
+            [uuids addObject:[CBUUID UUIDWithString:uuidStr]];
         }
         advertisingData[CBAdvertisementDataServiceUUIDsKey] = uuids;
     }
@@ -45,21 +45,22 @@ RCT_EXPORT_METHOD(stopAdvertising) {
 RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
     [self.services removeAllObjects];
     for (NSDictionary *serviceDict in services) {
-        NSString *uuid = serviceDict["uuid"];
+        NSString *uuid = serviceDict[@"uuid"];
         CBMutableService *service = [[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:uuid] primary:YES];
         NSMutableArray *characteristics = [NSMutableArray array];
-        for (NSDictionary *charDict in serviceDict["characteristics"]) {
-            NSString *charUUID = charDict["uuid"];
-            NSArray *propertiesArr = charDict["properties"];
+        for (NSDictionary *charDict in serviceDict[@"characteristics"]) {
+            NSString *charUUID = charDict[@"uuid"];
+            NSArray *propertiesArr = charDict[@"properties"];
             CBCharacteristicProperties properties = 0;
             for (NSString *prop in propertiesArr) {
                 if ([prop isEqualToString:@"read"]) properties |= CBCharacteristicPropertyRead;
                 if ([prop isEqualToString:@"write"]) properties |= CBCharacteristicPropertyWrite;
                 if ([prop isEqualToString:@"notify"]) properties |= CBCharacteristicPropertyNotify;
+                if ([prop isEqualToString:@"indicate"]) properties |= CBCharacteristicPropertyIndicate;
             }
             NSData *value = nil;
-            if (charDict["value"]) {
-                value = [charDict["value"] dataUsingEncoding:NSUTF8StringEncoding];
+            if (charDict[@"value"]) {
+                value = [charDict[@"value"] dataUsingEncoding:NSUTF8StringEncoding];
             }
             CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:charUUID] properties:properties value:value permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
             [characteristics addObject:characteristic];
