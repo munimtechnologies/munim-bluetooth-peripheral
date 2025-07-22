@@ -17,14 +17,15 @@ RCT_EXPORT_MODULE()
     return self;
 }
 
-// Update method signature to match protocol (use NSDictionary *)
-- (void)startAdvertising:(NSDictionary *)options {
+// Update method signature to match protocol (use id)
+- (void)startAdvertising:(id)options {
     if (self.peripheralManager.state != CBManagerStatePoweredOn) {
         // Peripheral manager not ready
         return;
     }
-    NSString *localName = options[@"localName"];
-    NSArray *serviceUUIDs = options[@"serviceUUIDs"];
+    NSDictionary *dictOptions = (NSDictionary *)options;
+    NSString *localName = dictOptions[@"localName"];
+    NSArray *serviceUUIDs = dictOptions[@"serviceUUIDs"];
     NSMutableDictionary *advertisingData = [NSMutableDictionary dictionary];
     if (localName) {
         advertisingData[CBAdvertisementDataLocalNameKey] = localName;
