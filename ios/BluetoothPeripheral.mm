@@ -17,13 +17,15 @@ RCT_EXPORT_MODULE()
     return self;
 }
 
-RCT_EXPORT_METHOD(startAdvertising:(NSDictionary *)options) {
+// Update method signature to match protocol (use id or NSDictionary * as placeholder if actual type is unknown)
+- (void)startAdvertising:(id)options {
     if (self.peripheralManager.state != CBManagerStatePoweredOn) {
         // Peripheral manager not ready
         return;
     }
-    NSString *localName = options[@"localName"];
-    NSArray *serviceUUIDs = options[@"serviceUUIDs"];
+    NSDictionary *dictOptions = (NSDictionary *)options;
+    NSString *localName = dictOptions[@"localName"];
+    NSArray *serviceUUIDs = dictOptions[@"serviceUUIDs"];
     NSMutableDictionary *advertisingData = [NSMutableDictionary dictionary];
     if (localName) {
         advertisingData[CBAdvertisementDataLocalNameKey] = localName;
@@ -84,6 +86,11 @@ RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
     return std::make_shared<facebook::react::NativeBluetoothPeripheralSpecJSI>(params);
+}
+
+// Add stubs for required CBPeripheralManagerDelegate methods
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    // Required delegate method. Add logic if needed.
 }
 
 @end
