@@ -1,6 +1,6 @@
 {
   "name": "BluetoothPeripheral",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "summary": "Bluetooth peripheral",
   "homepage": "https://github.com/sheehanmunim/react-native-bluetooth-peripheral#readme",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/sheehanmunim/react-native-bluetooth-peripheral.git",
-    "tag": "0.1.8"
+    "tag": "0.1.9"
   },
   "source_files": "ios/**/*.{h,m,mm,cpp}",
   "private_header_files": "ios/**/*.h",

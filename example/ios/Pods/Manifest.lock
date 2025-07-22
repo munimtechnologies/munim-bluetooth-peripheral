@@ -1,5 +1,5 @@
 PODS:
-  - BluetoothPeripheral (0.1.8):
+  - BluetoothPeripheral (0.1.9):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1906,7 +1906,7 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BluetoothPeripheral: c6c6f2816c90e0e664c3575faa7c21a4db413159
+  BluetoothPeripheral: 663c20f338766c91008eff2d06b18bf33684e994
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
