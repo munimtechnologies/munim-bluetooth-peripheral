@@ -1,0 +1,1 @@
+{"version":3,"names":["BluetoothPeripheral","multiply","a","b"],"sourceRoot":"../../src","sources":["index.tsx"],"mappings":";;AAAA,OAAOA,mBAAmB,MAAM,gCAA6B;AAE7D,OAAO,SAASC,QAAQA,CAACC,CAAS,EAAEC,CAAS,EAAU;EACrD,OAAOH,mBAAmB,CAACC,QAAQ,CAACC,CAAC,EAAEC,CAAC,CAAC;AAC3C","ignoreList":[]}
