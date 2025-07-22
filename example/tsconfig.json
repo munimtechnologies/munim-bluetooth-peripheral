@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "isolatedModules": true,
+    "jsx": "react-native"
+  },
+  "include": ["src", "index.js"],
+  "exclude": ["node_modules", "build", "dist"]
+}

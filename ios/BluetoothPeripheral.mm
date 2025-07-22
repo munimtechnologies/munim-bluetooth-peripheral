@@ -102,7 +102,6 @@ RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
     return result;
 }
 
-// Defensive: Only compile this if C++/TurboModule is available
 #ifdef __cplusplus
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
