@@ -63,8 +63,14 @@ RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
             NSData *value = nil;
             if (charDict[@"value"]) {
                 value = [charDict[@"value"] dataUsingEncoding:NSUTF8StringEncoding];
+                // If value is present, characteristic must be read-only
+                properties = CBCharacteristicPropertyRead;
             }
-            CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:charUUID] properties:properties value:value permissions:CBAttributePermissionsReadable|CBAttributePermissionsWriteable];
+            CBAttributePermissions permissions = CBAttributePermissionsReadable|CBAttributePermissionsWriteable;
+            if (value) {
+                permissions = CBAttributePermissionsReadable;
+            }
+            CBMutableCharacteristic *characteristic = [[CBMutableCharacteristic alloc] initWithType:[CBUUID UUIDWithString:charUUID] properties:properties value:value permissions:permissions];
             [characteristics addObject:characteristic];
         }
         service.characteristics = characteristics;
