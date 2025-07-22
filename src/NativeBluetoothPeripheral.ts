@@ -8,14 +8,16 @@ export interface Spec extends TurboModule {
     manufacturerData?: string;
   }): void;
   stopAdvertising(): void;
-  setServices(services: Array<{
-    uuid: string;
-    characteristics: Array<{
+  setServices(
+    services: Array<{
       uuid: string;
-      properties: string[];
-      value?: string;
-    }>;
-  }>): void;
+      characteristics: Array<{
+        uuid: string;
+        properties: string[];
+        value?: string;
+      }>;
+    }>
+  ): void;
   addListener(eventName: string): void;
   removeListeners(count: number): void;
 }

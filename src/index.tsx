@@ -12,14 +12,16 @@ export function stopAdvertising(): void {
   return BluetoothPeripheral.stopAdvertising();
 }
 
-export function setServices(services: Array<{
-  uuid: string;
-  characteristics: Array<{
+export function setServices(
+  services: Array<{
     uuid: string;
-    properties: string[];
-    value?: string;
-  }>;
-}>): void {
+    characteristics: Array<{
+      uuid: string;
+      properties: string[];
+      value?: string;
+    }>;
+  }>
+): void {
   return BluetoothPeripheral.setServices(services);
 }
 

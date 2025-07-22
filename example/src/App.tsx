@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
-import { startAdvertising, stopAdvertising, setServices } from 'react-native-bluetooth-peripheral';
+import {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+} from 'react-native-bluetooth-peripheral';
 
 export default function App() {
   const [advertising, setAdvertising] = useState(false);
@@ -32,9 +36,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ marginBottom: 16 }}>
-        Bluetooth Peripheral Example
-      </Text>
+      <Text style={{ marginBottom: 16 }}>Bluetooth Peripheral Example</Text>
       <Button
         title={advertising ? 'Stop Advertising' : 'Start Advertising'}
         onPress={advertising ? handleStop : handleStart}
