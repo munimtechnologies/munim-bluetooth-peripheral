@@ -1,9 +1,5 @@
 import BluetoothPeripheral from './NativeBluetoothPeripheral';
 
-export function multiply(a: number, b: number): number {
-  return BluetoothPeripheral.multiply(a, b);
-}
-
 export function startAdvertising(options: {
   serviceUUIDs: string[];
   localName?: string;

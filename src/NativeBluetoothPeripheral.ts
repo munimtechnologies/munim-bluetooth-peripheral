@@ -2,7 +2,6 @@ import type { TurboModule } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
 
 export interface Spec extends TurboModule {
-  multiply(a: number, b: number): number;
   startAdvertising(options: {
     serviceUUIDs: string[];
     localName?: string;
@@ -17,7 +16,6 @@ export interface Spec extends TurboModule {
       value?: string;
     }>;
   }>): void;
-  // Event subscription methods (for connection, read, write, etc.)
   addListener(eventName: string): void;
   removeListeners(count: number): void;
 }
