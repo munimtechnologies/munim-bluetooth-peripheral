@@ -1,5 +1,5 @@
-#import <BluetoothPeripheralSpec/BluetoothPeripheralSpec.h>
+#import <React/RCTBridgeModule.h>
 
-@interface BluetoothPeripheral : NSObject <NativeBluetoothPeripheralSpec>
+@interface BluetoothPeripheral : NSObject <RCTBridgeModule>
 
 @end

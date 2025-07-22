@@ -1,7 +1,8 @@
 package com.bluetoothperipheral
 
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.module.annotations.ReactModule
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.bluetooth.le.AdvertiseCallback
@@ -18,21 +19,14 @@ import android.os.ParcelUuid
 private var advertiser: BluetoothLeAdvertiser? = null
 private var gattServer: BluetoothGattServer? = null
 
-@ReactModule(name = BluetoothPeripheralModule.NAME)
 class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
-  NativeBluetoothPeripheralSpec(reactContext) {
+  ReactContextBaseJavaModule(reactContext) {
 
   override fun getName(): String {
-    return NAME
+    return "BluetoothPeripheral"
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  override fun multiply(a: Double, b: Double): Double {
-    return a * b
-  }
-
-  // Bluetooth emitter stubs
+  @ReactMethod
   fun startAdvertising(options: Map<String, Any>) {
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
@@ -55,11 +49,13 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
     advertiser?.startAdvertising(settings, dataBuilder.build(), object : AdvertiseCallback() {})
   }
 
+  @ReactMethod
   fun stopAdvertising() {
     advertiser?.stopAdvertising(object : AdvertiseCallback() {})
     advertiser = null
   }
 
+  @ReactMethod
   fun setServices(services: List<Map<String, Any>>) {
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
@@ -88,9 +84,5 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
       }
       gattServer?.addService(service)
     }
-  }
-
-  companion object {
-    const val NAME = "BluetoothPeripheral"
   }
 }

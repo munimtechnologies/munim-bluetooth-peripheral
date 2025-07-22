@@ -1,6 +1,5 @@
 #import "BluetoothPeripheral.h"
 #import <CoreBluetooth/CoreBluetooth.h>
-#import <RCTTypeSafety/RCTConvertHelpers.h>
 
 @interface BluetoothPeripheral () <CBPeripheralManagerDelegate>
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
@@ -8,7 +7,8 @@
 @end
 
 @implementation BluetoothPeripheral
-RCT_EXPORT_MODULE()
+
+RCT_EXPORT_MODULE();
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -18,19 +18,17 @@ RCT_EXPORT_MODULE()
     return self;
 }
 
-// Defensive: Ensure method signature matches protocol and type check options
-- (void)startAdvertising:(JS::NativeBluetoothPeripheral::SpecStartAdvertisingOptions &)options {
+RCT_EXPORT_METHOD(startAdvertising:(NSDictionary *)options) {
     if (self.peripheralManager.state != CBManagerStatePoweredOn) {
-        // Peripheral manager not ready
         return;
     }
-    NSString *localName = options.localName();
-    facebook::react::LazyVector<NSString *> serviceUUIDs = options.serviceUUIDs();
+    NSString *localName = options[@"localName"];
+    NSArray *serviceUUIDs = options[@"serviceUUIDs"];
     NSMutableDictionary *advertisingData = [NSMutableDictionary dictionary];
     if ([localName isKindOfClass:[NSString class]]) {
         advertisingData[CBAdvertisementDataLocalNameKey] = localName;
     }
-    if (serviceUUIDs.size() > 0) {
+    if ([serviceUUIDs isKindOfClass:[NSArray class]] && serviceUUIDs.count > 0) {
         NSMutableArray *uuids = [NSMutableArray array];
         for (NSString *uuidStr in serviceUUIDs) {
             if ([uuidStr isKindOfClass:[NSString class]]) {
@@ -73,7 +71,6 @@ RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
             NSData *value = nil;
             if ([charDict[@"value"] isKindOfClass:[NSString class]]) {
                 value = [charDict[@"value"] dataUsingEncoding:NSUTF8StringEncoding];
-                // If value is present, characteristic must be read-only
                 properties = CBCharacteristicPropertyRead;
             }
             CBAttributePermissions permissions = CBAttributePermissionsReadable|CBAttributePermissionsWriteable;
@@ -93,19 +90,6 @@ RCT_EXPORT_METHOD(setServices:(NSArray *)services) {
         [self.peripheralManager addService:service];
     }
 }
-
-- (NSNumber *)multiply:(double)a b:(double)b {
-    NSNumber *result = @(a * b);
-    return result;
-}
-
-#ifdef __cplusplus
-- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
-    (const facebook::react::ObjCTurboModule::InitParams &)params
-{
-    return std::make_shared<facebook::react::NativeBluetoothPeripheralSpecJSI>(params);
-}
-#endif
 
 // Add stubs for required CBPeripheralManagerDelegate methods
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {

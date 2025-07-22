@@ -1,22 +1,17 @@
-import type { TurboModule } from 'react-native';
-export interface Spec extends TurboModule {
-    startAdvertising(options: {
-        serviceUUIDs: string[];
-        localName?: string;
-        manufacturerData?: string;
-    }): void;
-    stopAdvertising(): void;
-    setServices(services: Array<{
+export declare function startAdvertising(options: {
+    serviceUUIDs: string[];
+    localName?: string;
+    manufacturerData?: string;
+}): void;
+export declare function stopAdvertising(): void;
+export declare function setServices(services: Array<{
+    uuid: string;
+    characteristics: Array<{
         uuid: string;
-        characteristics: Array<{
-            uuid: string;
-            properties: string[];
-            value?: string;
-        }>;
-    }>): void;
-    addListener(eventName: string): void;
-    removeListeners(count: number): void;
-}
-declare const _default: Spec;
-export default _default;
+        properties: string[];
+        value?: string;
+    }>;
+}>): void;
+export declare function addListener(_eventName: string): void;
+export declare function removeListeners(_count: number): void;
 //# sourceMappingURL=NativeBluetoothPeripheral.d.ts.map

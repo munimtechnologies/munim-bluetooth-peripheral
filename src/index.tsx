@@ -1,34 +1,15 @@
-import BluetoothPeripheral from './NativeBluetoothPeripheral';
+import {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+  addListener,
+  removeListeners,
+} from './NativeBluetoothPeripheral';
 
-export function startAdvertising(options: {
-  serviceUUIDs: string[];
-  localName?: string;
-  manufacturerData?: string;
-}): void {
-  return BluetoothPeripheral.startAdvertising(options);
-}
-
-export function stopAdvertising(): void {
-  return BluetoothPeripheral.stopAdvertising();
-}
-
-export function setServices(
-  services: Array<{
-    uuid: string;
-    characteristics: Array<{
-      uuid: string;
-      properties: string[];
-      value?: string;
-    }>;
-  }>
-): void {
-  return BluetoothPeripheral.setServices(services);
-}
-
-export function addListener(eventName: string): void {
-  return BluetoothPeripheral.addListener(eventName);
-}
-
-export function removeListeners(count: number): void {
-  return BluetoothPeripheral.removeListeners(count);
-}
+export {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+  addListener,
+  removeListeners,
+};
