@@ -17,12 +17,13 @@ RCT_EXPORT_MODULE()
     return self;
 }
 
-// Update method signature to match protocol (use id or NSDictionary * as placeholder if actual type is unknown)
-- (void)startAdvertising:(id)options {
+// Update method signature to match protocol (use generated type)
+- (void)startAdvertising:(NativeBluetoothPeripheralSpecStartAdvertisingOptions *)options {
     if (self.peripheralManager.state != CBManagerStatePoweredOn) {
         // Peripheral manager not ready
         return;
     }
+    // If options is a custom type, extract properties accordingly. If it is a subclass of NSDictionary, cast as needed.
     NSDictionary *dictOptions = (NSDictionary *)options;
     NSString *localName = dictOptions[@"localName"];
     NSArray *serviceUUIDs = dictOptions[@"serviceUUIDs"];
