@@ -25,66 +25,26 @@
     "RCT-Folly/Fabric": [
       "2024.11.18.00"
     ],
-    "React-jsiexecutor": [
-
-    ],
-    "React-cxxreact": [
-
-    ],
-    "React-callinvoker": [
-
-    ],
-    "React-runtimeexecutor": [
-
-    ],
-    "React-runtimescheduler": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "React-jsi": [
-
-    ],
-    "React-Core/Default": [
-
-    ],
-    "React-CoreModules": [
-
-    ],
-    "React-NativeModulesApple": [
-
-    ],
-    "React-RCTFabric": [
-
-    ],
-    "React-RuntimeCore": [
-
-    ],
-    "React-Mapbuffer": [
-
-    ],
-    "React-jserrorhandler": [
-
-    ],
-    "React-jsinspector": [
-
-    ],
-    "React-featureflags": [
-
-    ],
-    "React-jsitooling": [
-
-    ],
-    "React-RCTFBReactNativeSpec": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-RuntimeHermes": [
-
-    ]
+    "React-jsiexecutor": [],
+    "React-cxxreact": [],
+    "React-callinvoker": [],
+    "React-runtimeexecutor": [],
+    "React-runtimescheduler": [],
+    "React-utils": [],
+    "React-jsi": [],
+    "React-Core/Default": [],
+    "React-CoreModules": [],
+    "React-NativeModulesApple": [],
+    "React-RCTFabric": [],
+    "React-RuntimeCore": [],
+    "React-Mapbuffer": [],
+    "React-jserrorhandler": [],
+    "React-jsinspector": [],
+    "React-featureflags": [],
+    "React-jsitooling": [],
+    "React-RCTFBReactNativeSpec": [],
+    "hermes-engine": [],
+    "React-RuntimeHermes": []
   },
   "exclude_files": "ReactCommon/RCTJscInstance.{mm,h}"
 }

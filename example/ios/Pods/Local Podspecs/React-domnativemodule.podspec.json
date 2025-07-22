@@ -22,38 +22,16 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "RCT-Folly": [
-
-    ],
-    "React-jsi": [
-
-    ],
-    "React-jsiexecutor": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ],
-    "Yoga": [
-
-    ],
-    "ReactCommon/turbomodule/core": [
-
-    ],
-    "React-Fabric": [
-
-    ],
-    "React-FabricComponents": [
-
-    ],
-    "React-graphics": [
-
-    ],
-    "React-RCTFBReactNativeSpec": [
-
-    ]
+    "RCT-Folly": [],
+    "React-jsi": [],
+    "React-jsiexecutor": [],
+    "hermes-engine": [],
+    "React-hermes": [],
+    "Yoga": [],
+    "ReactCommon/turbomodule/core": [],
+    "React-Fabric": [],
+    "React-FabricComponents": [],
+    "React-graphics": [],
+    "React-RCTFBReactNativeSpec": []
   }
 }

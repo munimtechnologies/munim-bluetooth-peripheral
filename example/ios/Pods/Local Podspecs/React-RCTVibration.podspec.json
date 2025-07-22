@@ -31,20 +31,10 @@
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "React-jsi": [
-
-    ],
-    "React-Core/RCTVibrationHeaders": [
-
-    ],
-    "React-RCTFBReactNativeSpec": [
-
-    ],
-    "ReactCommon": [
-
-    ],
-    "React-NativeModulesApple": [
-
-    ]
+    "React-jsi": [],
+    "React-Core/RCTVibrationHeaders": [],
+    "React-RCTFBReactNativeSpec": [],
+    "ReactCommon": [],
+    "React-NativeModulesApple": []
   }
 }

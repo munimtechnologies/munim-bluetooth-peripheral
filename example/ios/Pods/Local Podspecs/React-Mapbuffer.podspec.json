@@ -22,11 +22,7 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
   },
   "dependencies": {
-    "glog": [
-
-    ],
-    "React-debug": [
-
-    ]
+    "glog": [],
+    "React-debug": []
   }
 }

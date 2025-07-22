@@ -26,35 +26,21 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
   },
   "dependencies": {
-    "glog": [
-
-    ],
+    "glog": [],
     "RCT-Folly/Fabric": [
       "2024.11.18.00"
     ],
-    "React-jsi": [
-
-    ],
-    "React-jsiexecutor": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "DoubleConversion": [
-
-    ],
+    "React-jsi": [],
+    "React-jsiexecutor": [],
+    "React-utils": [],
+    "DoubleConversion": [],
     "fast_float": [
       "6.1.4"
     ],
     "fmt": [
       "11.0.2"
     ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ]
+    "hermes-engine": [],
+    "React-hermes": []
   }
 }

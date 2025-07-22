@@ -21,53 +21,23 @@
     "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/RCT-Folly\" \"$(PODS_ROOT)/boost\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-debug/React_debug.framework/Headers\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspectortracing/jsinspector_moderntracing.framework/Headers\""
   },
   "dependencies": {
-    "React-runtimeexecutor": [
-
-    ],
-    "React-callinvoker": [
-
-    ],
-    "React-cxxreact": [
-
-    ],
-    "React-rendererdebug": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "React-featureflags": [
-
-    ],
-    "React-timing": [
-
-    ],
-    "glog": [
-
-    ],
+    "React-runtimeexecutor": [],
+    "React-callinvoker": [],
+    "React-cxxreact": [],
+    "React-rendererdebug": [],
+    "React-utils": [],
+    "React-featureflags": [],
+    "React-timing": [],
+    "glog": [],
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "React-jsi": [
-
-    ],
-    "React-performancetimeline": [
-
-    ],
-    "React-rendererconsistency": [
-
-    ],
-    "React-debug": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ]
+    "React-jsi": [],
+    "React-performancetimeline": [],
+    "React-rendererconsistency": [],
+    "React-debug": [],
+    "React-jsinspectortracing": [],
+    "hermes-engine": [],
+    "React-hermes": []
   }
 }

@@ -23,42 +23,20 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
   },
   "dependencies": {
-    "React-Core": [
-
-    ],
+    "React-Core": [],
     "RCT-Folly/Fabric": [
       "2024.11.18.00"
     ],
-    "glog": [
-
-    ],
-    "React-jsi": [
-
-    ],
-    "React-jsitooling": [
-
-    ],
-    "React-jsinspector": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
-    "React-RuntimeCore": [
-
-    ],
-    "React-RuntimeApple": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-RuntimeHermes": [
-
-    ],
-    "React-hermes": [
-
-    ]
+    "glog": [],
+    "React-jsi": [],
+    "React-jsitooling": [],
+    "React-jsinspector": [],
+    "React-jsinspectortracing": [],
+    "React-RuntimeCore": [],
+    "React-RuntimeApple": [],
+    "hermes-engine": [],
+    "React-RuntimeHermes": [],
+    "React-hermes": []
   },
   "exclude_files": "RCTJscInstanceFactory.{h,mm}"
 }

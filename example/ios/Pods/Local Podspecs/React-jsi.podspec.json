@@ -20,12 +20,8 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "boost": [
-
-    ],
-    "DoubleConversion": [
-
-    ],
+    "boost": [],
+    "DoubleConversion": [],
     "fast_float": [
       "6.1.4"
     ],
@@ -35,12 +31,8 @@
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "glog": [
-
-    ],
-    "hermes-engine": [
-
-    ]
+    "glog": [],
+    "hermes-engine": []
   },
   "source_files": "**/*.{cpp,h}",
   "exclude_files": [

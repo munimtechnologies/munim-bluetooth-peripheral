@@ -21,11 +21,7 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "RCT-Folly": [
-
-    ],
-    "React-oscompat": [
-
-    ]
+    "RCT-Folly": [],
+    "React-oscompat": []
   }
 }

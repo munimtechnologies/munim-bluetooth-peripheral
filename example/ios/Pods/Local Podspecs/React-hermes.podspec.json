@@ -32,38 +32,24 @@
     "React-jsiexecutor": [
       "0.79.2"
     ],
-    "React-jsinspector": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
+    "React-jsinspector": [],
+    "React-jsinspectortracing": [],
     "React-perflogger": [
       "0.79.2"
     ],
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "DoubleConversion": [
-
-    ],
+    "DoubleConversion": [],
     "fast_float": [
       "6.1.4"
     ],
     "fmt": [
       "11.0.2"
     ],
-    "glog": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-jsi": [
-
-    ],
-    "React-runtimeexecutor": [
-
-    ]
+    "glog": [],
+    "hermes-engine": [],
+    "React-jsi": [],
+    "React-runtimeexecutor": []
   }
 }

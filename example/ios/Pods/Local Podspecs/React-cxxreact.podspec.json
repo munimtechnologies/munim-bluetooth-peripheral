@@ -21,12 +21,8 @@
   },
   "header_dir": "cxxreact",
   "dependencies": {
-    "boost": [
-
-    ],
-    "DoubleConversion": [
-
-    ],
+    "boost": [],
+    "DoubleConversion": [],
     "fast_float": [
       "6.1.4"
     ],
@@ -36,15 +32,9 @@
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "glog": [
-
-    ],
-    "React-jsinspector": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
+    "glog": [],
+    "React-jsinspector": [],
+    "React-jsinspectortracing": [],
     "React-callinvoker": [
       "0.79.2"
     ],
@@ -66,9 +56,7 @@
     "React-timing": [
       "0.79.2"
     ],
-    "hermes-engine": [
-
-    ]
+    "hermes-engine": []
   },
   "resource_bundles": {
     "React-cxxreact_privacy": "PrivacyInfo.xcprivacy"

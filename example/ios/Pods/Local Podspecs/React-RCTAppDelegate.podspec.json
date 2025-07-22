@@ -25,80 +25,32 @@
     "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/Headers/Private/React-Core\" \"$(PODS_ROOT)/Headers/Private/Yoga\""
   },
   "dependencies": {
-    "React-Core": [
-
-    ],
+    "React-Core": [],
     "RCT-Folly": [
       "2024.11.18.00"
     ],
-    "RCTRequired": [
-
-    ],
-    "RCTTypeSafety": [
-
-    ],
-    "React-RCTNetwork": [
-
-    ],
-    "React-RCTImage": [
-
-    ],
-    "React-CoreModules": [
-
-    ],
-    "React-RCTFBReactNativeSpec": [
-
-    ],
-    "React-defaultsnativemodule": [
-
-    ],
-    "ReactCommon": [
-
-    ],
-    "React-NativeModulesApple": [
-
-    ],
-    "React-runtimescheduler": [
-
-    ],
-    "React-RCTFabric": [
-
-    ],
-    "React-RuntimeCore": [
-
-    ],
-    "React-RuntimeApple": [
-
-    ],
-    "React-Fabric": [
-
-    ],
-    "React-graphics": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "React-debug": [
-
-    ],
-    "React-rendererdebug": [
-
-    ],
-    "React-featureflags": [
-
-    ],
-    "React-jsitooling": [
-
-    ],
-    "React-RCTRuntime": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ]
+    "RCTRequired": [],
+    "RCTTypeSafety": [],
+    "React-RCTNetwork": [],
+    "React-RCTImage": [],
+    "React-CoreModules": [],
+    "React-RCTFBReactNativeSpec": [],
+    "React-defaultsnativemodule": [],
+    "ReactCommon": [],
+    "React-NativeModulesApple": [],
+    "React-runtimescheduler": [],
+    "React-RCTFabric": [],
+    "React-RuntimeCore": [],
+    "React-RuntimeApple": [],
+    "React-Fabric": [],
+    "React-graphics": [],
+    "React-utils": [],
+    "React-debug": [],
+    "React-rendererdebug": [],
+    "React-featureflags": [],
+    "React-jsitooling": [],
+    "React-RCTRuntime": [],
+    "hermes-engine": [],
+    "React-hermes": []
   }
 }

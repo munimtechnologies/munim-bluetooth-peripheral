@@ -22,29 +22,13 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "RCT-Folly/Fabric": [
-
-    ],
-    "React-Core/Default": [
-
-    ],
-    "glog": [
-
-    ],
-    "React-Fabric": [
-
-    ],
-    "React-graphics": [
-
-    ],
-    "React-debug": [
-
-    ],
-    "React-utils": [
-
-    ],
-    "React-rendererdebug": [
-
-    ]
+    "RCT-Folly/Fabric": [],
+    "React-Core/Default": [],
+    "glog": [],
+    "React-Fabric": [],
+    "React-graphics": [],
+    "React-debug": [],
+    "React-utils": [],
+    "React-rendererdebug": []
   }
 }

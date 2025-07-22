@@ -22,36 +22,16 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
   },
   "dependencies": {
-    "React-jsi": [
-
-    ],
-    "React-jsiexecutor": [
-
-    ],
-    "RCT-Folly": [
-
-    ],
-    "RCTRequired": [
-
-    ],
-    "RCTTypeSafety": [
-
-    ],
-    "React-Core": [
-
-    ],
-    "React-NativeModulesApple": [
-
-    ],
-    "ReactCommon": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ]
+    "React-jsi": [],
+    "React-jsiexecutor": [],
+    "RCT-Folly": [],
+    "RCTRequired": [],
+    "RCTTypeSafety": [],
+    "React-Core": [],
+    "React-NativeModulesApple": [],
+    "ReactCommon": [],
+    "hermes-engine": [],
+    "React-hermes": []
   },
   "script_phases": [
     {

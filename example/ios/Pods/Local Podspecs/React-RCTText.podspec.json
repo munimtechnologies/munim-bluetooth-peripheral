@@ -27,9 +27,7 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "c++20"
   },
   "dependencies": {
-    "Yoga": [
-
-    ],
+    "Yoga": [],
     "React-Core/RCTTextHeaders": [
       "0.79.2"
     ]

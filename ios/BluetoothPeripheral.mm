@@ -18,24 +18,20 @@ RCT_EXPORT_MODULE()
 }
 
 // Defensive: Ensure method signature matches protocol and type check options
-- (void)startAdvertising:(id)options {
+- (void)startAdvertising:(JS::NativeBluetoothPeripheral::SpecStartAdvertisingOptions &)options {
     if (self.peripheralManager.state != CBManagerStatePoweredOn) {
         // Peripheral manager not ready
         return;
     }
-    if (![options isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-    NSDictionary *dictOptions = (NSDictionary *)options;
-    NSString *localName = dictOptions[@"localName"];
-    NSArray *serviceUUIDs = dictOptions[@"serviceUUIDs"];
+    NSString *localName = options.localName();
+    facebook::react::LazyVector<NSString *> serviceUUIDs = options.serviceUUIDs();
     NSMutableDictionary *advertisingData = [NSMutableDictionary dictionary];
     if ([localName isKindOfClass:[NSString class]]) {
         advertisingData[CBAdvertisementDataLocalNameKey] = localName;
     }
-    if ([serviceUUIDs isKindOfClass:[NSArray class]]) {
+    if (serviceUUIDs.size() > 0) {
         NSMutableArray *uuids = [NSMutableArray array];
-        for (id uuidStr in serviceUUIDs) {
+        for (NSString *uuidStr in serviceUUIDs) {
             if ([uuidStr isKindOfClass:[NSString class]]) {
                 [uuids addObject:[CBUUID UUIDWithString:uuidStr]];
             }

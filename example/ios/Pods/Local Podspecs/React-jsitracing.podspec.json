@@ -21,8 +21,6 @@
     "GCC_WARN_PEDANTIC": "YES"
   },
   "dependencies": {
-    "React-jsi": [
-
-    ]
+    "React-jsi": []
   }
 }

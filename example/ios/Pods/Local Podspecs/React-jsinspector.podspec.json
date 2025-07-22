@@ -21,32 +21,18 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "glog": [
-
-    ],
-    "RCT-Folly": [
-
-    ],
-    "React-featureflags": [
-
-    ],
-    "DoubleConversion": [
-
-    ],
+    "glog": [],
+    "RCT-Folly": [],
+    "React-featureflags": [],
+    "DoubleConversion": [],
     "React-runtimeexecutor": [
       "0.79.2"
     ],
-    "React-jsi": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
+    "React-jsi": [],
+    "React-jsinspectortracing": [],
     "React-perflogger": [
       "0.79.2"
     ],
-    "hermes-engine": [
-
-    ]
+    "hermes-engine": []
   }
 }

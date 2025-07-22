@@ -21,21 +21,11 @@
     "HEADER_SEARCH_PATHS": "\"$(PODS_ROOT)/RCT-Folly\" \"$(PODS_ROOT)/boost\" \"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspectortracing/jsinspector_moderntracing.framework/Headers\""
   },
   "dependencies": {
-    "React-featureflags": [
-
-    ],
-    "React-jsinspectortracing": [
-
-    ],
-    "React-timing": [
-
-    ],
-    "React-cxxreact": [
-
-    ],
-    "React-perflogger": [
-
-    ],
+    "React-featureflags": [],
+    "React-jsinspectortracing": [],
+    "React-timing": [],
+    "React-cxxreact": [],
+    "React-perflogger": [],
     "RCT-Folly": [
       "2024.11.18.00"
     ]

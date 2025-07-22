@@ -22,29 +22,13 @@
     "DEFINES_MODULE": "YES"
   },
   "dependencies": {
-    "RCT-Folly": [
-
-    ],
-    "React-jsi": [
-
-    ],
-    "React-jsiexecutor": [
-
-    ],
-    "hermes-engine": [
-
-    ],
-    "React-hermes": [
-
-    ],
-    "ReactCommon/turbomodule/core": [
-
-    ],
-    "React-RCTFBReactNativeSpec": [
-
-    ],
-    "React-featureflags": [
-
-    ]
+    "RCT-Folly": [],
+    "React-jsi": [],
+    "React-jsiexecutor": [],
+    "hermes-engine": [],
+    "React-hermes": [],
+    "ReactCommon/turbomodule/core": [],
+    "React-RCTFBReactNativeSpec": [],
+    "React-featureflags": []
   }
 }
