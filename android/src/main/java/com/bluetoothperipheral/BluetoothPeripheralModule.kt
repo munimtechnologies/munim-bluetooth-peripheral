@@ -15,6 +15,8 @@ import android.bluetooth.BluetoothGattService
 import android.bluetooth.BluetoothGattCharacteristic
 import android.content.Context
 import android.os.ParcelUuid
+import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 
 private var advertiser: BluetoothLeAdvertiser? = null
 private var gattServer: BluetoothGattServer? = null
@@ -56,31 +58,41 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun setServices(services: List<Map<String, Any>>) {
+  fun setServices(services: ReadableArray) {
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
     gattServer = bluetoothManager.openGattServer(reactApplicationContext, object : BluetoothGattServerCallback() {})
     gattServer?.clearServices()
-    services.forEach { serviceMap ->
-      val serviceUuid = serviceMap["uuid"] as? String ?: return@forEach
+    for (i in 0 until services.size()) {
+      val serviceMap = services.getMap(i)
+      if (serviceMap == null) continue
+      val serviceUuid = serviceMap.getString("uuid") ?: continue
       val service = BluetoothGattService(java.util.UUID.fromString(serviceUuid), BluetoothGattService.SERVICE_TYPE_PRIMARY)
-      (serviceMap["characteristics"] as? List<*>)?.forEach { charMapAny ->
-        val charMap = charMapAny as? Map<*, *> ?: return@forEach
-        val charUuid = charMap["uuid"] as? String ?: return@forEach
-        val properties = (charMap["properties"] as? List<*>)?.fold(0) { acc, prop ->
-          acc or when (prop) {
-            "read" -> BluetoothGattCharacteristic.PROPERTY_READ
-            "write" -> BluetoothGattCharacteristic.PROPERTY_WRITE
-            "notify" -> BluetoothGattCharacteristic.PROPERTY_NOTIFY
-            else -> 0
+      val characteristics = serviceMap.getArray("characteristics")
+      if (characteristics != null) {
+        for (j in 0 until characteristics.size()) {
+          val charMap = characteristics.getMap(j)
+          if (charMap == null) continue
+          val charUuid = charMap.getString("uuid") ?: continue
+          val propertiesArray = charMap.getArray("properties")
+          var properties = 0
+          if (propertiesArray != null) {
+            for (k in 0 until propertiesArray.size()) {
+              when (propertiesArray.getString(k)) {
+                "read" -> properties = properties or BluetoothGattCharacteristic.PROPERTY_READ
+                "write" -> properties = properties or BluetoothGattCharacteristic.PROPERTY_WRITE
+                "notify" -> properties = properties or BluetoothGattCharacteristic.PROPERTY_NOTIFY
+              }
+            }
           }
-        } ?: 0
-        val permissions = BluetoothGattCharacteristic.PERMISSION_READ or BluetoothGattCharacteristic.PERMISSION_WRITE
-        val characteristic = BluetoothGattCharacteristic(java.util.UUID.fromString(charUuid), properties, permissions)
-        (charMap["value"] as? String)?.let { value ->
-          characteristic.value = value.toByteArray()
+          val permissions = BluetoothGattCharacteristic.PERMISSION_READ or BluetoothGattCharacteristic.PERMISSION_WRITE
+          val characteristic = BluetoothGattCharacteristic(java.util.UUID.fromString(charUuid), properties, permissions)
+          val value = charMap.getString("value")
+          if (value != null) {
+            characteristic.value = value.toByteArray()
+          }
+          service.addCharacteristic(characteristic)
         }
-        service.addCharacteristic(characteristic)
       }
       gattServer?.addService(service)
     }

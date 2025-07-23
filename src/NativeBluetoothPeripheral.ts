@@ -14,6 +14,12 @@ export function stopAdvertising(): void {
   return BluetoothPeripheral.stopAdvertising();
 }
 
+/**
+ * Set GATT services and characteristics for the Bluetooth peripheral.
+ *
+ * @param services - An array of service objects, each with a uuid and an array of characteristics.
+ *                  This must be serializable to a plain JS array (no Maps/Sets/functions).
+ */
 export function setServices(
   services: Array<{
     uuid: string;

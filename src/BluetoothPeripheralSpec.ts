@@ -8,6 +8,12 @@ export interface Spec extends TurboModule {
     manufacturerData?: string;
   }): void;
   stopAdvertising(): void;
+  /**
+   * Set GATT services and characteristics for the Bluetooth peripheral.
+   *
+   * @param services - An array of service objects, each with a uuid and an array of characteristics.
+   *                  This must be serializable to a plain JS array (no Maps/Sets/functions).
+   */
   setServices(
     services: Array<{
       uuid: string;
