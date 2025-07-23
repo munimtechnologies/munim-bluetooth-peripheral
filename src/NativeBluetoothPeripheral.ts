@@ -2,6 +2,12 @@ import { NativeModules } from 'react-native';
 
 const { BluetoothPeripheral } = NativeModules;
 
+/**
+ * Start advertising as a Bluetooth peripheral.
+ *
+ * @param options - An object with serviceUUIDs (string[]) and optional localName/manufacturerData.
+ *                  This must be a plain JS object (no Maps/Sets/functions).
+ */
 export function startAdvertising(options: {
   serviceUUIDs: string[];
   localName?: string;

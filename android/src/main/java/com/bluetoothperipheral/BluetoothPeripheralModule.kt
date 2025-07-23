@@ -29,7 +29,7 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun startAdvertising(options: Map<String, Any>) {
+  fun startAdvertising(options: ReadableMap) {
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
     advertiser = bluetoothAdapter.bluetoothLeAdvertiser
@@ -40,13 +40,18 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
       .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
       .build()
     val dataBuilder = AdvertiseData.Builder()
-    (options["serviceUUIDs"] as? List<*>)?.forEach {
-      (it as? String)?.let { uuid ->
-        dataBuilder.addServiceUuid(ParcelUuid.fromString(uuid))
+    val serviceUUIDs = options.getArray("serviceUUIDs")
+    if (serviceUUIDs != null) {
+      for (i in 0 until serviceUUIDs.size()) {
+        val uuid = serviceUUIDs.getString(i)
+        if (uuid != null) {
+          dataBuilder.addServiceUuid(ParcelUuid.fromString(uuid))
+        }
       }
     }
-    (options["localName"] as? String)?.let { name ->
-      bluetoothAdapter.name = name
+    val localName = options.getString("localName")
+    if (localName != null) {
+      bluetoothAdapter.name = localName
     }
     advertiser?.startAdvertising(settings, dataBuilder.build(), object : AdvertiseCallback() {})
   }
