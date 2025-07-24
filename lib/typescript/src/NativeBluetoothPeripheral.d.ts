@@ -1,3 +1,9 @@
+/**
+ * Start advertising as a Bluetooth peripheral.
+ *
+ * @param options - An object with serviceUUIDs (string[]) and optional localName/manufacturerData.
+ *                  This must be a plain JS object (no Maps/Sets/functions).
+ */
 export declare function startAdvertising(options: {
     serviceUUIDs: string[];
     localName?: string;
