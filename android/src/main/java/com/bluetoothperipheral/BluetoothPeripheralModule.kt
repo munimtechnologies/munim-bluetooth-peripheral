@@ -17,9 +17,14 @@ import android.content.Context
 import android.os.ParcelUuid
 import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
+import android.util.Log
+import kotlinx.coroutines.*
 
 private var advertiser: BluetoothLeAdvertiser? = null
 private var gattServer: BluetoothGattServer? = null
+private var gattServerReady = false
+private var advertiseJob: Job? = null
+private const val TAG = "BluetoothPeripheralModule"
 
 class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
@@ -32,38 +37,62 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
   fun startAdvertising(options: ReadableMap) {
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
-    advertiser = bluetoothAdapter.bluetoothLeAdvertiser
-    val settings = AdvertiseSettings.Builder()
-      .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
-      .setConnectable(true)
-      .setTimeout(0)
-      .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
-      .build()
-    val dataBuilder = AdvertiseData.Builder()
+    if (bluetoothAdapter == null || !bluetoothAdapter.isEnabled) {
+      Log.e(TAG, "Bluetooth is not enabled or not available")
+      return
+    }
     val serviceUUIDs = options.getArray("serviceUUIDs")
-    if (serviceUUIDs != null) {
+    if (serviceUUIDs == null || serviceUUIDs.size() == 0) {
+      Log.e(TAG, "No service UUIDs provided for advertising")
+      return
+    }
+    // Ensure GATT server is set up before advertising
+    if (!gattServerReady) {
+      setServicesFromOptions(serviceUUIDs)
+    }
+    // Cancel any previous advertising job
+    advertiseJob?.cancel()
+    advertiseJob = CoroutineScope(Dispatchers.Main).launch {
+      delay(300) // Wait for GATT server to be ready
+      advertiser = bluetoothAdapter.bluetoothLeAdvertiser
+      val settings = AdvertiseSettings.Builder()
+        .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
+        .setConnectable(true)
+        .setTimeout(0)
+        .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
+        .build()
+      val dataBuilder = AdvertiseData.Builder()
       for (i in 0 until serviceUUIDs.size()) {
         val uuid = serviceUUIDs.getString(i)
         if (uuid != null) {
           dataBuilder.addServiceUuid(ParcelUuid.fromString(uuid))
         }
       }
+      val localName = options.getString("localName")
+      if (localName != null) {
+        bluetoothAdapter.name = localName
+      }
+      advertiser?.startAdvertising(settings, dataBuilder.build(), object : AdvertiseCallback() {
+        override fun onStartSuccess(settingsInEffect: AdvertiseSettings) {
+          Log.i(TAG, "Advertising started successfully")
+        }
+        override fun onStartFailure(errorCode: Int) {
+          Log.e(TAG, "Advertising failed: $errorCode")
+        }
+      })
     }
-    val localName = options.getString("localName")
-    if (localName != null) {
-      bluetoothAdapter.name = localName
-    }
-    advertiser?.startAdvertising(settings, dataBuilder.build(), object : AdvertiseCallback() {})
   }
 
   @ReactMethod
   fun stopAdvertising() {
     advertiser?.stopAdvertising(object : AdvertiseCallback() {})
     advertiser = null
+    advertiseJob?.cancel()
   }
 
   @ReactMethod
   fun setServices(services: ReadableArray) {
+    gattServerReady = false
     val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
     val bluetoothAdapter = bluetoothManager.adapter
     gattServer = bluetoothManager.openGattServer(reactApplicationContext, object : BluetoothGattServerCallback() {})
@@ -101,5 +130,20 @@ class BluetoothPeripheralModule(reactContext: ReactApplicationContext) :
       }
       gattServer?.addService(service)
     }
+    gattServerReady = true
+  }
+
+  // Helper to set up GATT server from serviceUUIDs array (for basic advertising)
+  private fun setServicesFromOptions(serviceUUIDs: ReadableArray) {
+    gattServerReady = false
+    val bluetoothManager = reactApplicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+    gattServer = bluetoothManager.openGattServer(reactApplicationContext, object : BluetoothGattServerCallback() {})
+    gattServer?.clearServices()
+    for (i in 0 until serviceUUIDs.size()) {
+      val uuid = serviceUUIDs.getString(i) ?: continue
+      val service = BluetoothGattService(java.util.UUID.fromString(uuid), BluetoothGattService.SERVICE_TYPE_PRIMARY)
+      gattServer?.addService(service)
+    }
+    gattServerReady = true
   }
 }
