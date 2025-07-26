@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/munimtechnologies/munim-bluetooth-peripheral">
-    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner.png?v=2">
+    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner-dark.png?v=3">
     <h1 align="center">munim-bluetooth-peripheral</h1>
   </a>
 </p>
@@ -10,9 +10,6 @@
 <p align="center">
    <a aria-label="Package version" href="https://www.npmjs.com/package/munim-bluetooth-peripheral" target="_blank">
     <img alt="Package version" src="https://img.shields.io/npm/v/munim-bluetooth-peripheral.svg?style=flat-square&label=Version&labelColor=000000&color=0066CC" />
-  </a>
-  <a aria-label="Chat or ask a question" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions" target="_blank">
-    <img alt="Chat or ask a question" src="https://img.shields.io/badge/Discussions-000000.svg?style=flat-square&labelColor=000000&color=0066CC&logo=github&logoColor=FFFFFF&label=Chat%20with%20us" />
   </a>
   <a aria-label="Package is free to use" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
@@ -28,8 +25,6 @@
   <a aria-label="documentation" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme">Read the Documentation</a>
 &ensp;•&ensp;
   <a aria-label="report issues" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues">Report Issues</a>
-&ensp;•&ensp;
-  <a aria-label="request features" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions">Request Features</a>
 </p>
 
 <h6 align="center">Follow Munim Technologies</h6>
@@ -51,7 +46,28 @@
 
 **Fully compatible with Expo!** Works seamlessly with both Expo managed and bare workflows.
 
-## Features
+## Table of contents
+
+- [📚 Documentation](#-documentation)
+- [🚀 Features](#-features)
+- [📦 Installation](#-installation)
+- [⚡ Quick Start](#-quick-start)
+- [🔧 API Reference](#-api-reference)
+- [📖 Usage Examples](#-usage-examples)
+- [🔍 Troubleshooting](#-troubleshooting)
+- [👏 Contributing](#-contributing)
+- [📄 License](#-license)
+
+## 📚 Documentation
+
+<p>Learn about building BLE peripheral apps <a aria-label="documentation" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme">in our documentation!</a></p>
+
+- [Getting Started](#-installation)
+- [API Reference](#-api-reference)
+- [Usage Examples](#-usage-examples)
+- [Troubleshooting](#-troubleshooting)
+
+## 🚀 Features
 
 - 🔵 **BLE Peripheral Mode**: Transform your React Native app into a BLE peripheral device
 - 📡 **Service Advertising**: Advertise custom GATT services with multiple characteristics
@@ -61,7 +77,7 @@
 - ⚡ **High Performance**: Built with React Native's new architecture (Fabric)
 - 🚀 **Expo Compatible**: Works seamlessly with Expo managed and bare workflows
 
-## Installation
+## 📦 Installation
 
 ### React Native CLI
 
@@ -137,7 +153,7 @@ For Android, add the following permissions to your `AndroidManifest.xml`:
 }
 ```
 
-## Quick Start
+## ⚡ Quick Start
 
 ### React Native CLI
 
@@ -207,7 +223,7 @@ startAdvertising({
 });
 ```
 
-## API Reference
+## 🔧 API Reference
 
 ### `setServices(services: Service[])`
 
@@ -250,7 +266,7 @@ Add event listeners for peripheral events.
 
 Remove event listeners for peripheral events.
 
-## Usage Examples
+## 📖 Usage Examples
 
 ### Basic Peripheral Setup
 
@@ -369,28 +385,7 @@ const SensorPeripheral = () => {
 };
 ```
 
-## Event Handling
-
-The library provides several events you can listen to:
-
-```js
-// Connection state changes
-addListener('connectionStateChanged', (state) => {
-  console.log('Connection state:', state);
-});
-
-// Characteristic read requests
-addListener('characteristicRead', (characteristic) => {
-  console.log('Characteristic read:', characteristic);
-});
-
-// Characteristic write requests
-addListener('characteristicWrite', (characteristic) => {
-  console.log('Characteristic write:', characteristic);
-});
-```
-
-## Troubleshooting
+## 🔍 Troubleshooting
 
 ### Common Issues
 
@@ -412,28 +407,14 @@ Enable debug logging by setting the following environment variable:
 export REACT_NATIVE_BLUETOOTH_DEBUG=1
 ```
 
-## Contributing
+## 👏 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
 
-## Support
-
-- 📖 [Documentation](https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme)
-- 🐛 [Report Issues](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues)
-- 💬 [Discussions](https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions)
-- 📱 [Expo Documentation](https://docs.expo.dev/versions/latest/)
-- 🔧 [Expo Development Builds](https://docs.expo.dev/develop/development-builds/introduction/)
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
-
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-<div align="center">
-  <img alt="Star the Munim Technologies repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
-</div>
+<img alt="Star the Munim Technologies repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
