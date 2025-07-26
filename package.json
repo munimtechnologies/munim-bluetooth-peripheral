@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sheehanmunim/munim-bluetooth-peripheral.git"
+    "url": "git+https://github.com/munimtechnologies/munim-bluetooth-peripheral.git"
   },
   "author": "sheehanmunim <sheehanmunim@gmail.com> (https://github.com/sheehanmunim)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sheehanmunim/munim-bluetooth-peripheral/issues"
+    "url": "https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues"
   },
-  "homepage": "https://github.com/sheehanmunim/munim-bluetooth-peripheral#readme",
+  "homepage": "https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
