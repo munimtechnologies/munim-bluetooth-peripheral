@@ -66,7 +66,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com) or by creating an issue
+[support@munimtech.com](mailto:support@munimtech.com) or by creating an issue
 in the [GitHub repository](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues).
 
 All complaints will be reviewed and investigated promptly and fairly.
@@ -123,7 +123,7 @@ community.
 ## Reporting Guidelines
 
 If you believe someone is violating the code of conduct, we ask that you report
-it by emailing [sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com) or by
+it by emailing [support@munimtech.com](mailto:support@munimtech.com) or by
 creating an issue in the [GitHub repository](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues).
 
 **All reports will be kept confidential.** In some cases we may determine that a
@@ -141,7 +141,7 @@ If the violation occurs at an event, please also contact the event organizers.
 ## Questions and Feedback
 
 If you have questions or feedback about this Code of Conduct, please contact us
-at [sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com).
+at [support@munimtech.com](mailto:support@munimtech.com).
 
 ## Attribution
 
