@@ -1,5 +1,5 @@
 {
-  "name": "@sheehanmunim/react-native-bluetooth-peripheral",
+  "name": "munim-bluetooth-peripheral",
   "version": "0.2.4",
   "description": "Bluetooth peripheral",
   "main": "./lib/module/index.js",
@@ -32,7 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-bluetooth-peripheral-example",
+    "example": "yarn workspace munim-bluetooth-peripheral-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -48,14 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sheehanmunim/react-native-bluetooth-peripheral.git"
+    "url": "git+https://github.com/sheehanmunim/munim-bluetooth-peripheral.git"
   },
   "author": "sheehanmunim <sheehanmunim@gmail.com> (https://github.com/sheehanmunim)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sheehanmunim/react-native-bluetooth-peripheral/issues"
+    "url": "https://github.com/sheehanmunim/munim-bluetooth-peripheral/issues"
   },
-  "homepage": "https://github.com/sheehanmunim/react-native-bluetooth-peripheral#readme",
+  "homepage": "https://github.com/sheehanmunim/munim-bluetooth-peripheral#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

@@ -1,17 +1,17 @@
-# react-native-bluetooth-peripheral
+# munim-bluetooth-peripheral
 
 Bluetooth peripheral
 
 ## Installation
 
 ```sh
-npm install react-native-bluetooth-peripheral
+npm install munim-bluetooth-peripheral
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-bluetooth-peripheral';
+import { multiply } from 'munim-bluetooth-peripheral';
 
 // ...
 
@@ -25,7 +25,7 @@ import {
   startAdvertising,
   stopAdvertising,
   setServices,
-} from 'react-native-bluetooth-peripheral';
+} from 'munim-bluetooth-peripheral';
 
 // Set up a GATT service with a characteristic
 setServices([
