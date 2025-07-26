@@ -1,4 +1,3 @@
-
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
@@ -18,24 +17,30 @@ diverse, inclusive, and healthy community.
 Examples of behavior that contributes to a positive environment for our
 community include:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the overall
+- Focusing on what is best not just for us as individuals, but for the overall
   community
+- Showing courtesy and respect in all interactions
+- Being patient and helpful with newcomers
+- Providing constructive, actionable feedback on code and documentation
 
 Examples of unacceptable behavior include:
 
-* The use of sexualized language or imagery, and sexual attention or advances of
+- The use of sexualized language or imagery, and sexual attention or advances of
   any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email address,
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email address,
   without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional setting
+- Dismissive or condescending responses to questions or contributions
+- Spamming or excessive self-promotion
+- Making assumptions about someone's technical knowledge or experience
 
 ## Enforcement Responsibilities
 
@@ -61,7 +66,9 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[INSERT CONTACT METHOD].
+[sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com) or by creating an issue
+in the [GitHub repository](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues).
+
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
@@ -112,6 +119,29 @@ individual, or aggression toward or disparagement of classes of individuals.
 
 **Consequence**: A permanent ban from any sort of public interaction within the
 community.
+
+## Reporting Guidelines
+
+If you believe someone is violating the code of conduct, we ask that you report
+it by emailing [sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com) or by
+creating an issue in the [GitHub repository](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues).
+
+**All reports will be kept confidential.** In some cases we may determine that a
+public statement will need to be made. If that's the case, the identities of
+all victims and reporters will remain confidential unless those individuals
+instruct us otherwise.
+
+If you believe anyone is in physical danger, please notify appropriate law
+enforcement first. If you are unsure what law enforcement agency is
+appropriate, please include this in your report and we will attempt to notify
+them.
+
+If the violation occurs at an event, please also contact the event organizers.
+
+## Questions and Feedback
+
+If you have questions or feedback about this Code of Conduct, please contact us
+at [sheehanmunim@gmail.com](mailto:sheehanmunim@gmail.com).
 
 ## Attribution
 
