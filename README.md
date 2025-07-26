@@ -1,11 +1,55 @@
-# munim-bluetooth-peripheral
+<!-- Banner Image -->
 
-<div align="center">
-  <h1>🔵 Munim Technologies</h1>
-  <em>A React Native library for creating Bluetooth Low Energy (BLE) peripheral devices</em>
-</div>
+<p align="center">
+  <a href="https://github.com/munimtechnologies/munim-bluetooth-peripheral">
+    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner.svg">
+    <h1 align="center">munim-bluetooth-peripheral</h1>
+  </a>
+</p>
 
-This library allows your React Native app to act as a BLE peripheral, advertising services and characteristics that other devices can discover and connect to. **Fully compatible with Expo!**
+<p align="center">
+   <a aria-label="Package version" href="https://www.npmjs.com/package/munim-bluetooth-peripheral" target="_blank">
+    <img alt="Package version" src="https://img.shields.io/npm/v/munim-bluetooth-peripheral.svg?style=flat-square&label=Version&labelColor=000000&color=0066CC" />
+  </a>
+  <a aria-label="Chat or ask a question" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions" target="_blank">
+    <img alt="Chat or ask a question" src="https://img.shields.io/badge/Discussions-000000.svg?style=flat-square&labelColor=000000&color=0066CC&logo=github&logoColor=FFFFFF&label=Chat%20with%20us" />
+  </a>
+  <a aria-label="Package is free to use" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/blob/main/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
+  </a>
+  <a aria-label="package downloads" href="https://www.npmtrends.com/munim-bluetooth-peripheral" target="_blank">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/munim-bluetooth-peripheral.svg?style=flat-square&labelColor=gray&color=33CC12&label=Downloads" />
+  </a>
+</p>
+
+<p align="center">
+  <a aria-label="try with expo" href="https://docs.expo.dev/"><b>Works with Expo</b></a>
+&ensp;•&ensp;
+  <a aria-label="documentation" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme">Read the Documentation</a>
+&ensp;•&ensp;
+  <a aria-label="report issues" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues">Report Issues</a>
+&ensp;•&ensp;
+  <a aria-label="request features" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions">Request Features</a>
+</p>
+
+<h6 align="center">Follow Munim Technologies</h6>
+<p align="center">
+  <a aria-label="Follow Munim Technologies on GitHub" href="https://github.com/munimtechnologies" target="_blank">
+    <img alt="Munim Technologies on GitHub" src="https://img.shields.io/badge/GitHub-222222?style=for-the-badge&logo=github&logoColor=white" target="_blank" />
+  </a>&nbsp;
+  <a aria-label="Follow Munim Technologies on LinkedIn" href="https://linkedin.com/company/munim-technologies" target="_blank">
+    <img alt="Munim Technologies on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
+  </a>&nbsp;
+  <a aria-label="Visit Munim Technologies Website" href="https://munimtechnologies.com" target="_blank">
+    <img alt="Munim Technologies Website" src="https://img.shields.io/badge/Website-0066CC?style=for-the-badge&logo=globe&logoColor=white" target="_blank" />
+  </a>
+</p>
+
+## Introduction
+
+**munim-bluetooth-peripheral** is a React Native library for creating Bluetooth Low Energy (BLE) peripheral devices. This library allows your React Native app to act as a BLE peripheral, advertising services and characteristics that other devices can discover and connect to.
+
+**Fully compatible with Expo!** Works seamlessly with both Expo managed and bare workflows.
 
 ## Features
 
@@ -372,10 +416,6 @@ export REACT_NATIVE_BLUETOOTH_DEBUG=1
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Support
 
 - 📖 [Documentation](https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme)
@@ -388,6 +428,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 See [CHANGELOG.md](CHANGELOG.md) for a list of changes and version history.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ---
 
-Made with ❤️ by [Munim Technologies](https://github.com/munimtechnologies)
+<div align="center">
+  <img alt="Star the Munim Technologies repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
+</div>
