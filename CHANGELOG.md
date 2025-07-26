@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced documentation with comprehensive examples
 - Improved README with better structure and API reference
 - Updated Code of Conduct with proper contact information
+- **Expo Support**: Full compatibility with Expo managed and bare workflows
+- **Expo Installation**: Added `npx expo install munim-bluetooth-peripheral` support
+- **Enhanced Keywords**: Added comprehensive npm tags for better discoverability
+- **Munim Technologies Branding**: Added company logo and branding elements
 
 ## [0.2.4] - 2025-01-26
 

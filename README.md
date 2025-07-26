@@ -1,6 +1,11 @@
 # munim-bluetooth-peripheral
 
-A React Native library for creating Bluetooth Low Energy (BLE) peripheral devices. This library allows your React Native app to act as a BLE peripheral, advertising services and characteristics that other devices can discover and connect to.
+<div align="center">
+  <h1>🔵 Munim Technologies</h1>
+  <em>A React Native library for creating Bluetooth Low Energy (BLE) peripheral devices</em>
+</div>
+
+This library allows your React Native app to act as a BLE peripheral, advertising services and characteristics that other devices can discover and connect to. **Fully compatible with Expo!**
 
 ## Features
 
@@ -10,14 +15,25 @@ A React Native library for creating Bluetooth Low Energy (BLE) peripheral device
 - 📱 **Cross-platform**: Works on both iOS and Android
 - 🎯 **TypeScript Support**: Full TypeScript definitions included
 - ⚡ **High Performance**: Built with React Native's new architecture (Fabric)
+- 🚀 **Expo Compatible**: Works seamlessly with Expo managed and bare workflows
 
 ## Installation
+
+### React Native CLI
 
 ```bash
 npm install munim-bluetooth-peripheral
 # or
 yarn add munim-bluetooth-peripheral
 ```
+
+### Expo
+
+```bash
+npx expo install munim-bluetooth-peripheral
+```
+
+> **Note**: This library requires Expo SDK 50+ and works with both managed and bare workflows.
 
 ### iOS Setup
 
@@ -28,6 +44,21 @@ For iOS, the library is automatically linked. However, you need to add the follo
 <string>This app uses Bluetooth to create a peripheral device</string>
 <key>NSBluetoothPeripheralUsageDescription</key>
 <string>This app uses Bluetooth to create a peripheral device</string>
+```
+
+**For Expo projects**, add these permissions to your `app.json`:
+
+```json
+{
+  "expo": {
+    "ios": {
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "This app uses Bluetooth to create a peripheral device",
+        "NSBluetoothPeripheralUsageDescription": "This app uses Bluetooth to create a peripheral device"
+      }
+    }
+  }
+}
 ```
 
 ### Android Setup
@@ -43,7 +74,28 @@ For Android, add the following permissions to your `AndroidManifest.xml`:
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
+**For Expo projects**, add these permissions to your `app.json`:
+
+```json
+{
+  "expo": {
+    "android": {
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_ADVERTISE",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
+    }
+  }
+}
+```
+
 ## Quick Start
+
+### React Native CLI
 
 ```js
 import {
@@ -76,6 +128,39 @@ startAdvertising({
 
 // Stop advertising when done
 // stopAdvertising();
+```
+
+### Expo
+
+For Expo projects, you can use the same API. The library is fully compatible with Expo managed and bare workflows:
+
+```js
+import {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+  addListener,
+  removeListeners,
+} from 'munim-bluetooth-peripheral';
+
+// Same usage as React Native CLI
+setServices([
+  {
+    uuid: '12345678-1234-5678-1234-56789abcdef0',
+    characteristics: [
+      {
+        uuid: 'abcdefab-1234-5678-1234-56789abcdef0',
+        properties: ['read', 'write', 'notify'],
+        value: 'Hello World',
+      },
+    ],
+  },
+]);
+
+startAdvertising({
+  serviceUUIDs: ['12345678-1234-5678-1234-56789abcdef0'],
+  localName: 'MyExpoPeripheral',
+});
 ```
 
 ## API Reference
@@ -269,6 +354,12 @@ addListener('characteristicWrite', (characteristic) => {
 2. **Advertising Not Starting**: Check that Bluetooth is enabled on the device
 3. **Services Not Visible**: Verify that your service UUIDs are properly formatted
 
+### Expo-Specific Issues
+
+1. **Development Build Required**: This library requires a development build in Expo. Use `npx expo run:ios` or `npx expo run:android`
+2. **Permissions Not Working**: Make sure you've added the permissions to your `app.json` as shown in the setup section
+3. **Build Errors**: Ensure you're using Expo SDK 50+ and have the latest Expo CLI
+
 ### Debug Mode
 
 Enable debug logging by setting the following environment variable:
@@ -290,6 +381,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 📖 [Documentation](https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme)
 - 🐛 [Report Issues](https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues)
 - 💬 [Discussions](https://github.com/munimtechnologies/munim-bluetooth-peripheral/discussions)
+- 📱 [Expo Documentation](https://docs.expo.dev/versions/latest/)
+- 🔧 [Expo Development Builds](https://docs.expo.dev/develop/development-builds/introduction/)
 
 ## Changelog
 
