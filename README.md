@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/munimtechnologies/munim-bluetooth-peripheral">
-    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner.svg">
+    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner.png">
     <h1 align="center">munim-bluetooth-peripheral</h1>
   </a>
 </p>
@@ -37,10 +37,10 @@
   <a aria-label="Follow Munim Technologies on GitHub" href="https://github.com/munimtechnologies" target="_blank">
     <img alt="Munim Technologies on GitHub" src="https://img.shields.io/badge/GitHub-222222?style=for-the-badge&logo=github&logoColor=white" target="_blank" />
   </a>&nbsp;
-  <a aria-label="Follow Munim Technologies on LinkedIn" href="https://linkedin.com/company/munim-technologies" target="_blank">
+  <a aria-label="Follow Munim Technologies on LinkedIn" href="https://linkedin.com/in/sheehanmunim" target="_blank">
     <img alt="Munim Technologies on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
   </a>&nbsp;
-  <a aria-label="Visit Munim Technologies Website" href="https://munimtechnologies.com" target="_blank">
+  <a aria-label="Visit Munim Technologies Website" href="https://munimtech.com" target="_blank">
     <img alt="Munim Technologies Website" src="https://img.shields.io/badge/Website-0066CC?style=for-the-badge&logo=globe&logoColor=white" target="_blank" />
   </a>
 </p>
