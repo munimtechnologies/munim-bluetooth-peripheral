@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/munimtechnologies/munim-bluetooth-peripheral">
-    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner-dark.png?v=3">
+    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner.png?v=4">
     <h1 align="center">munim-bluetooth-peripheral</h1>
   </a>
 </p>
