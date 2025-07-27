@@ -10,15 +10,6 @@ export interface AdvertisingDataTypes {
     shortenedLocalName?: string;
     completeLocalName?: string;
     txPowerLevel?: number;
-    classOfDevice?: number;
-    simplePairingHashC?: string;
-    simplePairingRandomizerR?: string;
-    securityManagerTKValue?: string;
-    securityManagerOOFlags?: number;
-    slaveConnectionIntervalRange?: {
-        min: number;
-        max: number;
-    };
     serviceSolicitationUUIDs16?: string[];
     serviceSolicitationUUIDs128?: string[];
     serviceData16?: Array<{
@@ -33,49 +24,15 @@ export interface AdvertisingDataTypes {
         uuid: string;
         data: string;
     }>;
-    publicTargetAddress?: string;
-    randomTargetAddress?: string;
     appearance?: number;
-    advertisingInterval?: number;
-    leBluetoothDeviceAddress?: string;
-    leRole?: 'central' | 'peripheral';
-    simplePairingHashC256?: string;
-    simplePairingRandomizerR256?: string;
     serviceSolicitationUUIDs32?: string[];
-    leSecureConnectionsConfirmationValue?: string;
-    leSecureConnectionsRandomValue?: string;
-    uri?: string;
-    indoorPositioning?: {
-        floor?: number;
-        room?: number;
-        coordinates?: {
-            x: number;
-            y: number;
-            z?: number;
-        };
-    };
-    transportDiscoveryData?: Array<{
-        transportType: 'usb' | 'nfc' | 'wifi' | 'bluetooth';
-        data: string;
-    }>;
-    leSupportedFeatures?: number[];
-    channelMapUpdateIndication?: string;
-    pbAdv?: string;
-    meshMessage?: string;
-    meshBeacon?: string;
-    bigInfo?: string;
-    broadcastCode?: string;
-    resolvableSetIdentifier?: string;
-    advertisingIntervalLong?: number;
-    bisData?: string;
-    threeDInformationData?: string;
     manufacturerData?: string;
 }
 export interface Spec extends TurboModule {
     /**
-     * Start advertising as a Bluetooth peripheral with comprehensive advertising data support.
+     * Start advertising as a Bluetooth peripheral with supported advertising data.
      *
-     * @param options - An object with serviceUUIDs (string[]) and comprehensive advertising data types.
+     * @param options - An object with serviceUUIDs (string[]) and supported advertising data types.
      *                  This must be a plain JS object (no Maps/Sets/functions).
      */
     startAdvertising(options: {
