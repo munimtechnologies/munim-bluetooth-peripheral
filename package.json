@@ -1,7 +1,7 @@
 {
   "name": "munim-bluetooth-peripheral",
-  "version": "0.2.7",
-  "description": "A React Native library for creating Bluetooth Low Energy (BLE) peripheral devices with Expo support",
+  "version": "0.3.0",
+  "description": "A React Native library for creating Bluetooth Low Energy (BLE) peripheral devices with comprehensive advertising data support and Expo support",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -35,6 +35,7 @@
     "!android/gradlew.bat",
     "!android/local.properties",
     "!**/__tests__",
+    "USAGE_EXAMPLES.md",
     "!**/__fixtures__",
     "!**/__mocks__",
     "!.yarn",

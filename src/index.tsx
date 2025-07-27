@@ -4,7 +4,10 @@ import {
   setServices,
   addListener,
   removeListeners,
+  updateAdvertisingData,
+  getAdvertisingData,
 } from './NativeBluetoothPeripheral';
+import type { AdvertisingDataTypes } from './BluetoothPeripheralSpec';
 
 export {
   startAdvertising,
@@ -12,4 +15,8 @@ export {
   setServices,
   addListener,
   removeListeners,
+  updateAdvertisingData,
+  getAdvertisingData,
 };
+
+export type { AdvertisingDataTypes };
