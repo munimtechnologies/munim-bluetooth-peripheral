@@ -82,15 +82,18 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
 }
 
 - (void)processAdvertisingData:(NSDictionary *)dataDict into:(NSMutableDictionary *)advertisingData {
-    // 0x01 - Flags
+    // 0x01 - Flags (partial support)
     if (dataDict[@"flags"]) {
         NSNumber *flags = dataDict[@"flags"];
         if ([flags isKindOfClass:[NSNumber class]]) {
-            advertisingData[CBAdvertisementDataIsConnectable] = @(flags.intValue & 0x01);
+            // iOS Core Bluetooth handles most flags automatically
+            // The connectable flag is controlled by CBAdvertisementDataIsConnectable
+            BOOL isConnectable = (flags.intValue & 0x02) != 0;
+            advertisingData[CBAdvertisementDataIsConnectable] = @(isConnectable);
         }
     }
     
-    // 0x02-0x07 - Service UUIDs
+    // 0x02-0x07 - Service UUIDs (fully supported)
     [self addServiceUUIDs:dataDict[@"incompleteServiceUUIDs16"] to:advertisingData key:CBAdvertisementDataServiceUUIDsKey];
     [self addServiceUUIDs:dataDict[@"completeServiceUUIDs16"] to:advertisingData key:CBAdvertisementDataServiceUUIDsKey];
     [self addServiceUUIDs:dataDict[@"incompleteServiceUUIDs32"] to:advertisingData key:CBAdvertisementDataServiceUUIDsKey];
@@ -98,7 +101,7 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
     [self addServiceUUIDs:dataDict[@"incompleteServiceUUIDs128"] to:advertisingData key:CBAdvertisementDataServiceUUIDsKey];
     [self addServiceUUIDs:dataDict[@"completeServiceUUIDs128"] to:advertisingData key:CBAdvertisementDataServiceUUIDsKey];
     
-    // 0x08-0x09 - Local Name
+    // 0x08-0x09 - Local Name (fully supported)
     if (dataDict[@"shortenedLocalName"]) {
         advertisingData[CBAdvertisementDataLocalNameKey] = dataDict[@"shortenedLocalName"];
     }
@@ -106,7 +109,7 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
         advertisingData[CBAdvertisementDataLocalNameKey] = dataDict[@"completeLocalName"];
     }
     
-    // 0x0A - Tx Power Level
+    // 0x0A - Tx Power Level (fully supported)
     if (dataDict[@"txPowerLevel"]) {
         NSNumber *txPower = dataDict[@"txPowerLevel"];
         if ([txPower isKindOfClass:[NSNumber class]]) {
@@ -114,307 +117,31 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
         }
     }
     
-    // 0x0D - Class of Device
-    if (dataDict[@"classOfDevice"]) {
-        NSNumber *cod = dataDict[@"classOfDevice"];
-        if ([cod isKindOfClass:[NSNumber class]]) {
-            advertisingData[CBAdvertisementDataOverflowServiceUUIDsKey] = @(cod.intValue);
-        }
-    }
-    
-    // 0x0E-0x0F - Simple Pairing
-    if (dataDict[@"simplePairingHashC"]) {
-        NSData *hashData = [self hexStringToData:dataDict[@"simplePairingHashC"]];
-        if (hashData) {
-            advertisingData[@"simplePairingHashC"] = hashData;
-        }
-    }
-    if (dataDict[@"simplePairingRandomizerR"]) {
-        NSData *randomData = [self hexStringToData:dataDict[@"simplePairingRandomizerR"]];
-        if (randomData) {
-            advertisingData[@"simplePairingRandomizerR"] = randomData;
-        }
-    }
-    
-    // 0x10-0x11 - Security Manager
-    if (dataDict[@"securityManagerTKValue"]) {
-        NSData *tkData = [self hexStringToData:dataDict[@"securityManagerTKValue"]];
-        if (tkData) {
-            advertisingData[@"securityManagerTKValue"] = tkData;
-        }
-    }
-    if (dataDict[@"securityManagerOOFlags"]) {
-        NSNumber *flags = dataDict[@"securityManagerOOFlags"];
-        if ([flags isKindOfClass:[NSNumber class]]) {
-            advertisingData[@"securityManagerOOFlags"] = flags;
-        }
-    }
-    
-    // 0x12 - Slave Connection Interval Range
-    if (dataDict[@"slaveConnectionIntervalRange"]) {
-        NSDictionary *range = dataDict[@"slaveConnectionIntervalRange"];
-        if ([range isKindOfClass:[NSDictionary class]]) {
-            NSNumber *min = range[@"min"];
-            NSNumber *max = range[@"max"];
-            if ([min isKindOfClass:[NSNumber class]] && [max isKindOfClass:[NSNumber class]]) {
-                NSData *rangeData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(min.intValue & 0xFF), (uint8_t)((min.intValue >> 8) & 0xFF), (uint8_t)(max.intValue & 0xFF), (uint8_t)((max.intValue >> 8) & 0xFF)} length:4];
-                advertisingData[@"slaveConnectionIntervalRange"] = rangeData;
-            }
-        }
-    }
-    
-    // 0x14-0x15 - Service Solicitation
+    // 0x14-0x15 - Service Solicitation UUIDs (fully supported)
     [self addServiceUUIDs:dataDict[@"serviceSolicitationUUIDs16"] to:advertisingData key:CBAdvertisementDataSolicitedServiceUUIDsKey];
     [self addServiceUUIDs:dataDict[@"serviceSolicitationUUIDs128"] to:advertisingData key:CBAdvertisementDataSolicitedServiceUUIDsKey];
     
-    // 0x16, 0x20, 0x21 - Service Data
+    // 0x16, 0x20, 0x21 - Service Data (fully supported)
     [self addServiceData:dataDict[@"serviceData16"] to:advertisingData];
     [self addServiceData:dataDict[@"serviceData32"] to:advertisingData];
     [self addServiceData:dataDict[@"serviceData128"] to:advertisingData];
     
-    // 0x17-0x18 - Target Address
-    if (dataDict[@"publicTargetAddress"]) {
-        NSData *addressData = [self hexStringToData:dataDict[@"publicTargetAddress"]];
-        if (addressData) {
-            advertisingData[@"publicTargetAddress"] = addressData;
-        }
-    }
-    if (dataDict[@"randomTargetAddress"]) {
-        NSData *addressData = [self hexStringToData:dataDict[@"randomTargetAddress"]];
-        if (addressData) {
-            advertisingData[@"randomTargetAddress"] = addressData;
-        }
-    }
-    
-    // 0x19 - Appearance
+    // 0x19 - Appearance (partial support)
     if (dataDict[@"appearance"]) {
         NSNumber *appearance = dataDict[@"appearance"];
         if ([appearance isKindOfClass:[NSNumber class]]) {
-            advertisingData[CBAdvertisementDataLocalNameKey] = appearance;
+            // iOS doesn't have direct CBAdvertisementData support for appearance
+            // We can include it as custom service data if needed
+            NSData *appearanceData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(appearance.intValue & 0xFF), (uint8_t)((appearance.intValue >> 8) & 0xFF)} length:2];
+            // Store with Generic Access service UUID
+            advertisingData[[CBUUID UUIDWithString:@"1800"]] = appearanceData;
         }
     }
     
-    // 0x1A - Advertising Interval
-    if (dataDict[@"advertisingInterval"]) {
-        NSNumber *interval = dataDict[@"advertisingInterval"];
-        if ([interval isKindOfClass:[NSNumber class]]) {
-            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(interval.intValue & 0xFF), (uint8_t)((interval.intValue >> 8) & 0xFF)} length:2];
-            advertisingData[@"advertisingInterval"] = intervalData;
-        }
-    }
-    
-    // 0x1B - LE Bluetooth Device Address
-    if (dataDict[@"leBluetoothDeviceAddress"]) {
-        NSData *addressData = [self hexStringToData:dataDict[@"leBluetoothDeviceAddress"]];
-        if (addressData) {
-            advertisingData[@"leBluetoothDeviceAddress"] = addressData;
-        }
-    }
-    
-    // 0x1C - LE Role
-    if (dataDict[@"leRole"]) {
-        NSString *role = dataDict[@"leRole"];
-        if ([role isKindOfClass:[NSString class]]) {
-            uint8_t roleValue = [role isEqualToString:@"central"] ? 0x00 : 0x01;
-            advertisingData[@"leRole"] = [NSData dataWithBytes:&roleValue length:1];
-        }
-    }
-    
-    // 0x1D-0x1E - Simple Pairing (256-bit)
-    if (dataDict[@"simplePairingHashC256"]) {
-        NSData *hashData = [self hexStringToData:dataDict[@"simplePairingHashC256"]];
-        if (hashData) {
-            advertisingData[@"simplePairingHashC256"] = hashData;
-        }
-    }
-    if (dataDict[@"simplePairingRandomizerR256"]) {
-        NSData *randomData = [self hexStringToData:dataDict[@"simplePairingRandomizerR256"]];
-        if (randomData) {
-            advertisingData[@"simplePairingRandomizerR256"] = randomData;
-        }
-    }
-    
-    // 0x1F - Service Solicitation (32-bit)
+    // 0x1F - Service Solicitation (32-bit) (fully supported)
     [self addServiceUUIDs:dataDict[@"serviceSolicitationUUIDs32"] to:advertisingData key:CBAdvertisementDataSolicitedServiceUUIDsKey];
     
-    // 0x22-0x23 - LE Secure Connections
-    if (dataDict[@"leSecureConnectionsConfirmationValue"]) {
-        NSData *confirmData = [self hexStringToData:dataDict[@"leSecureConnectionsConfirmationValue"]];
-        if (confirmData) {
-            advertisingData[@"leSecureConnectionsConfirmationValue"] = confirmData;
-        }
-    }
-    if (dataDict[@"leSecureConnectionsRandomValue"]) {
-        NSData *randomData = [self hexStringToData:dataDict[@"leSecureConnectionsRandomValue"]];
-        if (randomData) {
-            advertisingData[@"leSecureConnectionsRandomValue"] = randomData;
-        }
-    }
-    
-    // 0x24 - URI
-    if (dataDict[@"uri"]) {
-        NSString *uri = dataDict[@"uri"];
-        if ([uri isKindOfClass:[NSString class]]) {
-            NSData *uriData = [uri dataUsingEncoding:NSUTF8StringEncoding];
-            advertisingData[@"uri"] = uriData;
-        }
-    }
-    
-    // 0x25 - Indoor Positioning
-    if (dataDict[@"indoorPositioning"]) {
-        NSDictionary *positioning = dataDict[@"indoorPositioning"];
-        if ([positioning isKindOfClass:[NSDictionary class]]) {
-            NSMutableData *positioningData = [NSMutableData data];
-            if (positioning[@"floor"]) {
-                uint8_t floor = [positioning[@"floor"] intValue];
-                [positioningData appendBytes:&floor length:1];
-            }
-            if (positioning[@"room"]) {
-                uint8_t room = [positioning[@"room"] intValue];
-                [positioningData appendBytes:&room length:1];
-            }
-            if (positioning[@"coordinates"]) {
-                NSDictionary *coords = positioning[@"coordinates"];
-                if ([coords isKindOfClass:[NSDictionary class]]) {
-                    float x = [coords[@"x"] floatValue];
-                    float y = [coords[@"y"] floatValue];
-                    [positioningData appendBytes:&x length:4];
-                    [positioningData appendBytes:&y length:4];
-                    if (coords[@"z"]) {
-                        float z = [coords[@"z"] floatValue];
-                        [positioningData appendBytes:&z length:4];
-                    }
-                }
-            }
-            if (positioningData.length > 0) {
-                advertisingData[@"indoorPositioning"] = positioningData;
-            }
-        }
-    }
-    
-    // 0x26 - Transport Discovery Data
-    if (dataDict[@"transportDiscoveryData"]) {
-        NSArray *transports = dataDict[@"transportDiscoveryData"];
-        if ([transports isKindOfClass:[NSArray class]]) {
-            NSMutableData *transportData = [NSMutableData data];
-            for (NSDictionary *transport in transports) {
-                if ([transport isKindOfClass:[NSDictionary class]]) {
-                    NSString *type = transport[@"transportType"];
-                    NSString *data = transport[@"data"];
-                    if ([type isKindOfClass:[NSString class]] && [data isKindOfClass:[NSString class]]) {
-                        uint8_t typeValue = 0;
-                        if ([type isEqualToString:@"usb"]) typeValue = 0x01;
-                        else if ([type isEqualToString:@"nfc"]) typeValue = 0x02;
-                        else if ([type isEqualToString:@"wifi"]) typeValue = 0x03;
-                        else if ([type isEqualToString:@"bluetooth"]) typeValue = 0x04;
-                        
-                        [transportData appendBytes:&typeValue length:1];
-                        NSData *transportDataBytes = [self hexStringToData:data];
-                        if (transportDataBytes) {
-                            [transportData appendData:transportDataBytes];
-                        }
-                    }
-                }
-            }
-            if (transportData.length > 0) {
-                advertisingData[@"transportDiscoveryData"] = transportData;
-            }
-        }
-    }
-    
-    // 0x27 - LE Supported Features
-    if (dataDict[@"leSupportedFeatures"]) {
-        NSArray *features = dataDict[@"leSupportedFeatures"];
-        if ([features isKindOfClass:[NSArray class]]) {
-            NSMutableData *featuresData = [NSMutableData data];
-            for (NSNumber *feature in features) {
-                if ([feature isKindOfClass:[NSNumber class]]) {
-                    uint8_t featureValue = feature.intValue;
-                    [featuresData appendBytes:&featureValue length:1];
-                }
-            }
-            if (featuresData.length > 0) {
-                advertisingData[@"leSupportedFeatures"] = featuresData;
-            }
-        }
-    }
-    
-    // 0x28 - Channel Map Update Indication
-    if (dataDict[@"channelMapUpdateIndication"]) {
-        NSData *channelData = [self hexStringToData:dataDict[@"channelMapUpdateIndication"]];
-        if (channelData) {
-            advertisingData[@"channelMapUpdateIndication"] = channelData;
-        }
-    }
-    
-    // 0x29-0x2B - Mesh
-    if (dataDict[@"pbAdv"]) {
-        NSData *pbAdvData = [self hexStringToData:dataDict[@"pbAdv"]];
-        if (pbAdvData) {
-            advertisingData[@"pbAdv"] = pbAdvData;
-        }
-    }
-    if (dataDict[@"meshMessage"]) {
-        NSData *meshData = [self hexStringToData:dataDict[@"meshMessage"]];
-        if (meshData) {
-            advertisingData[@"meshMessage"] = meshData;
-        }
-    }
-    if (dataDict[@"meshBeacon"]) {
-        NSData *beaconData = [self hexStringToData:dataDict[@"meshBeacon"]];
-        if (beaconData) {
-            advertisingData[@"meshBeacon"] = beaconData;
-        }
-    }
-    
-    // 0x2C-0x2D - LE Audio
-    if (dataDict[@"bigInfo"]) {
-        NSData *bigInfoData = [self hexStringToData:dataDict[@"bigInfo"]];
-        if (bigInfoData) {
-            advertisingData[@"bigInfo"] = bigInfoData;
-        }
-    }
-    if (dataDict[@"broadcastCode"]) {
-        NSData *broadcastData = [self hexStringToData:dataDict[@"broadcastCode"]];
-        if (broadcastData) {
-            advertisingData[@"broadcastCode"] = broadcastData;
-        }
-    }
-    
-    // 0x2E - Resolvable Set Identifier
-    if (dataDict[@"resolvableSetIdentifier"]) {
-        NSData *rsiData = [self hexStringToData:dataDict[@"resolvableSetIdentifier"]];
-        if (rsiData) {
-            advertisingData[@"resolvableSetIdentifier"] = rsiData;
-        }
-    }
-    
-    // 0x2F - Advertising Interval Long
-    if (dataDict[@"advertisingIntervalLong"]) {
-        NSNumber *interval = dataDict[@"advertisingIntervalLong"];
-        if ([interval isKindOfClass:[NSNumber class]]) {
-            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(interval.intValue & 0xFF), (uint8_t)((interval.intValue >> 8) & 0xFF), (uint8_t)((interval.intValue >> 16) & 0xFF), (uint8_t)((interval.intValue >> 24) & 0xFF)} length:4];
-            advertisingData[@"advertisingIntervalLong"] = intervalData;
-        }
-    }
-    
-    // 0x30 - Broadcast Isochronous Stream Data
-    if (dataDict[@"bisData"]) {
-        NSData *bisData = [self hexStringToData:dataDict[@"bisData"]];
-        if (bisData) {
-            advertisingData[@"bisData"] = bisData;
-        }
-    }
-    
-    // 0x3D - 3D Information Data
-    if (dataDict[@"threeDInformationData"]) {
-        NSData *threeDData = [self hexStringToData:dataDict[@"threeDInformationData"]];
-        if (threeDData) {
-            advertisingData[@"threeDInformationData"] = threeDData;
-        }
-    }
-    
-    // 0xFF - Manufacturer Specific Data
+    // 0xFF - Manufacturer Specific Data (fully supported)
     if (dataDict[@"manufacturerData"]) {
         NSData *manufacturerData = [self hexStringToData:dataDict[@"manufacturerData"]];
         if (manufacturerData) {
