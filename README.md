@@ -1,43 +1,161 @@
-# React Native Bluetooth Peripheral
+<!-- Banner Image -->
 
-A React Native library for creating Bluetooth Low Energy (BLE) peripherals that can advertise and provide GATT services.
+<p align="center">
+  <a href="https://github.com/munimtechnologies/munim-bluetooth-peripheral">
+    <img alt="Munim Technologies Bluetooth Peripheral" height="128" src="./.github/resources/banner-dark.png?v=3">
+    <h1 align="center">munim-bluetooth-peripheral</h1>
+  </a>
+</p>
 
-## Features
+<p align="center">
+   <a aria-label="Package version" href="https://www.npmjs.com/package/munim-bluetooth-peripheral" target="_blank">
+    <img alt="Package version" src="https://img.shields.io/npm/v/munim-bluetooth-peripheral.svg?style=flat-square&label=Version&labelColor=000000&color=0066CC" />
+  </a>
+  <a aria-label="Package is free to use" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/blob/main/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
+  </a>
+  <a aria-label="package downloads" href="https://www.npmtrends.com/munim-bluetooth-peripheral" target="_blank">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/munim-bluetooth-peripheral.svg?style=flat-square&labelColor=gray&color=33CC12&label=Downloads" />
+  </a>
+</p>
 
-- ✅ Start/stop BLE advertising
-- ✅ Set GATT services and characteristics
-- ✅ **Comprehensive support for all BLE advertising data types**
-- ✅ Update advertising data dynamically
-- ✅ Cross-platform (iOS & Android)
-- ✅ TypeScript support
+<p align="center">
+  <a aria-label="try with expo" href="https://docs.expo.dev/"><b>Works with Expo</b></a>
+&ensp;•&ensp;
+  <a aria-label="documentation" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme">Read the Documentation</a>
+&ensp;•&ensp;
+  <a aria-label="report issues" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral/issues">Report Issues</a>
+</p>
 
-## Installation
+<h6 align="center">Follow Munim Technologies</h6>
+<p align="center">
+  <a aria-label="Follow Munim Technologies on GitHub" href="https://github.com/munimtechnologies" target="_blank">
+    <img alt="Munim Technologies on GitHub" src="https://img.shields.io/badge/GitHub-222222?style=for-the-badge&logo=github&logoColor=white" target="_blank" />
+  </a>&nbsp;
+  <a aria-label="Follow Munim Technologies on LinkedIn" href="https://linkedin.com/in/sheehanmunim" target="_blank">
+    <img alt="Munim Technologies on LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
+  </a>&nbsp;
+  <a aria-label="Visit Munim Technologies Website" href="https://munimtech.com" target="_blank">
+    <img alt="Munim Technologies Website" src="https://img.shields.io/badge/Website-0066CC?style=for-the-badge&logo=globe&logoColor=white" target="_blank" />
+  </a>
+</p>
+
+## Introduction
+
+**munim-bluetooth-peripheral** is a React Native library for creating Bluetooth Low Energy (BLE) peripheral devices. This library allows your React Native app to act as a BLE peripheral, advertising services and characteristics that other devices can discover and connect to.
+
+**Fully compatible with Expo!** Works seamlessly with both Expo managed and bare workflows.
+
+## Table of contents
+
+- [📚 Documentation](#-documentation)
+- [🚀 Features](#-features)
+- [📦 Installation](#-installation)
+- [⚡ Quick Start](#-quick-start)
+- [🔧 API Reference](#-api-reference)
+- [📖 Usage Examples](#-usage-examples)
+- [🔍 Troubleshooting](#-troubleshooting)
+- [👏 Contributing](#-contributing)
+- [📄 License](#-license)
+
+## 📚 Documentation
+
+<p>Learn about building BLE peripheral apps <a aria-label="documentation" href="https://github.com/munimtechnologies/munim-bluetooth-peripheral#readme">in our documentation!</a></p>
+
+- [Getting Started](#-installation)
+- [API Reference](#-api-reference)
+- [Usage Examples](#-usage-examples)
+- [Troubleshooting](#-troubleshooting)
+
+## 🚀 Features
+
+- 🔵 **BLE Peripheral Mode**: Transform your React Native app into a BLE peripheral device
+- 📡 **Service Advertising**: Advertise custom GATT services with multiple characteristics
+- 🔄 **Real-time Communication**: Support for read, write, and notify operations
+- 📱 **Cross-platform**: Works on both iOS and Android
+- 🎯 **TypeScript Support**: Full TypeScript definitions included
+- ⚡ **High Performance**: Built with React Native's new architecture (Fabric)
+- 🚀 **Expo Compatible**: Works seamlessly with Expo managed and bare workflows
+- ✅ **Comprehensive BLE Advertising Data Types**: Support for all 31+ BLE advertising data types
+- 🔧 **Dynamic Updates**: Update advertising data while advertising is active
+
+## 📦 Installation
+
+### React Native CLI
 
 ```bash
-npm install react-native-bluetooth-peripheral
+npm install munim-bluetooth-peripheral
 # or
-yarn add react-native-bluetooth-peripheral
+yarn add munim-bluetooth-peripheral
 ```
 
-### iOS
-
-Add the following to your `ios/Podfile`:
-
-```ruby
-pod 'react-native-bluetooth-peripheral', :path => '../node_modules/react-native-bluetooth-peripheral'
-```
-
-Then run:
+### Expo
 
 ```bash
-cd ios && pod install
+npx expo install munim-bluetooth-peripheral
 ```
 
-### Android
+> **Note**: This library requires Expo SDK 50+ and works with both managed and bare workflows.
 
-No additional setup required for Android.
+### iOS Setup
 
-## Usage
+For iOS, the library is automatically linked. However, you need to add the following to your `Info.plist`:
+
+```xml
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>This app uses Bluetooth to create a peripheral device</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>This app uses Bluetooth to create a peripheral device</string>
+```
+
+**For Expo projects**, add these permissions to your `app.json`:
+
+```json
+{
+  "expo": {
+    "ios": {
+      "infoPlist": {
+        "NSBluetoothAlwaysUsageDescription": "This app uses Bluetooth to create a peripheral device",
+        "NSBluetoothPeripheralUsageDescription": "This app uses Bluetooth to create a peripheral device"
+      }
+    }
+  }
+}
+```
+
+### Android Setup
+
+For Android, add the following permissions to your `AndroidManifest.xml`:
+
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+```
+
+**For Expo projects**, add these permissions to your `app.json`:
+
+```json
+{
+  "expo": {
+    "android": {
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_ADVERTISE",
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
+    }
+  }
+}
+```
+
+## ⚡ Quick Start
 
 ### Basic Usage
 
@@ -46,7 +164,7 @@ import {
   startAdvertising,
   stopAdvertising,
   setServices,
-} from 'react-native-bluetooth-peripheral';
+} from 'munim-bluetooth-peripheral';
 
 // Start advertising with basic options
 startAdvertising({
@@ -81,7 +199,7 @@ import {
   updateAdvertisingData,
   getAdvertisingData,
   type AdvertisingDataTypes,
-} from 'react-native-bluetooth-peripheral';
+} from 'munim-bluetooth-peripheral';
 
 // Comprehensive advertising data configuration
 const advertisingData: AdvertisingDataTypes = {
@@ -229,7 +347,7 @@ const currentData = await getAdvertisingData();
 console.log('Current advertising data:', currentData);
 ```
 
-## API Reference
+## 🔧 API Reference
 
 ### Functions
 
@@ -446,47 +564,12 @@ interface AdvertisingDataTypes {
 | 0x3D             | 3D Information Data               | 3D positioning support          | `threeDInformationData: '3F40414243444546'`                               |
 | 0xFF             | Manufacturer Specific Data        | Vendor-defined data             | `manufacturerData: '4748494A4B4C4D4E'`                                    |
 
-## Permissions
-
-### iOS
-
-Add the following to your `Info.plist`:
-
-```xml
-<key>NSBluetoothAlwaysUsageDescription</key>
-<string>This app uses Bluetooth to advertise as a peripheral device.</string>
-<key>NSBluetoothPeripheralUsageDescription</key>
-<string>This app uses Bluetooth to advertise as a peripheral device.</string>
-```
-
-### Android
-
-Add the following permissions to your `AndroidManifest.xml`:
-
-```xml
-<uses-permission android:name="android.permission.BLUETOOTH" />
-<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-<uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-```
-
-For Android 12+ (API level 31+), also add:
-
-```xml
-<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-```
-
-## Examples
+## 📖 Usage Examples
 
 ### Health Device Example
 
 ```typescript
-import {
-  startAdvertising,
-  setServices,
-} from 'react-native-bluetooth-peripheral';
+import { startAdvertising, setServices } from 'munim-bluetooth-peripheral';
 
 // Health device advertising
 startAdvertising({
@@ -535,7 +618,7 @@ setServices([
 import {
   startAdvertising,
   updateAdvertisingData,
-} from 'react-native-bluetooth-peripheral';
+} from 'munim-bluetooth-peripheral';
 
 // Smart home device
 startAdvertising({
@@ -563,14 +646,153 @@ updateAdvertisingData({
 });
 ```
 
-## Contributing
+### Basic Peripheral Setup
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+```js
+import React, { useEffect } from 'react';
+import {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+  addListener,
+  removeListeners,
+} from 'munim-bluetooth-peripheral';
 
-## License
+const MyPeripheral = () => {
+  useEffect(() => {
+    // Configure services
+    setServices([
+      {
+        uuid: '1800', // Generic Access Service
+        characteristics: [
+          {
+            uuid: '2a00', // Device Name
+            properties: ['read'],
+            value: 'MyDevice',
+          },
+          {
+            uuid: '2a01', // Appearance
+            properties: ['read'],
+            value: '0x03C0', // Generic Computer
+          },
+        ],
+      },
+      {
+        uuid: '1801', // Generic Attribute Service
+        characteristics: [
+          {
+            uuid: '2a05', // Service Changed
+            properties: ['indicate'],
+          },
+        ],
+      },
+    ]);
+
+    // Start advertising
+    startAdvertising({
+      serviceUUIDs: ['1800', '1801'],
+      localName: 'MyReactNativePeripheral',
+    });
+
+    // Cleanup on unmount
+    return () => {
+      stopAdvertising();
+      removeListeners('connectionStateChanged');
+    };
+  }, []);
+
+  return <Text>Peripheral is running...</Text>;
+};
+```
+
+### Custom Service with Notifications
+
+```js
+import React, { useState, useEffect } from 'react';
+import {
+  startAdvertising,
+  stopAdvertising,
+  setServices,
+  addListener,
+} from 'munim-bluetooth-peripheral';
+
+const SensorPeripheral = () => {
+  const [sensorValue, setSensorValue] = useState(0);
+
+  useEffect(() => {
+    // Create a custom sensor service
+    setServices([
+      {
+        uuid: '12345678-1234-5678-1234-56789abcdef0',
+        characteristics: [
+          {
+            uuid: 'abcdefab-1234-5678-1234-56789abcdef0',
+            properties: ['read', 'notify'],
+            value: sensorValue.toString(),
+          },
+          {
+            uuid: 'fedcbaab-1234-5678-1234-56789abcdef0',
+            properties: ['write'],
+          },
+        ],
+      },
+    ]);
+
+    startAdvertising({
+      serviceUUIDs: ['12345678-1234-5678-1234-56789abcdef0'],
+      localName: 'SensorPeripheral',
+    });
+
+    // Listen for connection events
+    addListener('connectionStateChanged', (state) => {
+      console.log('Connection state:', state);
+    });
+
+    // Simulate sensor updates
+    const interval = setInterval(() => {
+      setSensorValue((prev) => prev + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      stopAdvertising();
+    };
+  }, [sensorValue]);
+
+  return <Text>Sensor Value: {sensorValue}</Text>;
+};
+```
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+1. **Permission Denied**: Ensure you have the necessary Bluetooth permissions in your app
+2. **Advertising Not Starting**: Check that Bluetooth is enabled on the device
+3. **Services Not Visible**: Verify that your service UUIDs are properly formatted
+
+### Expo-Specific Issues
+
+1. **Development Build Required**: This library requires a development build in Expo. Use `npx expo run:ios` or `npx expo run:android`
+2. **Permissions Not Working**: Make sure you've added the permissions to your `app.json` as shown in the setup section
+3. **Build Errors**: Ensure you're using Expo SDK 50+ and have the latest Expo CLI
+
+### Debug Mode
+
+Enable debug logging by setting the following environment variable:
+
+```bash
+export REACT_NATIVE_BLUETOOTH_DEBUG=1
+```
+
+## 👏 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on how to submit pull requests, report issues, and contribute to the project.
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<img alt="Star the Munim Technologies repo on GitHub to support the project" src="https://user-images.githubusercontent.com/9664363/185428788-d762fd5d-97b3-4f59-8db7-f72405be9677.gif" width="50%">
