@@ -157,7 +157,7 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
             NSNumber *min = range[@"min"];
             NSNumber *max = range[@"max"];
             if ([min isKindOfClass:[NSNumber class]] && [max isKindOfClass:[NSNumber class]]) {
-                NSData *rangeData = [NSData dataWithBytes:(uint8_t[]){min.intValue & 0xFF, (min.intValue >> 8) & 0xFF, max.intValue & 0xFF, (max.intValue >> 8) & 0xFF} length:4];
+                NSData *rangeData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(min.intValue & 0xFF), (uint8_t)((min.intValue >> 8) & 0xFF), (uint8_t)(max.intValue & 0xFF), (uint8_t)((max.intValue >> 8) & 0xFF)} length:4];
                 advertisingData[@"slaveConnectionIntervalRange"] = rangeData;
             }
         }
@@ -198,7 +198,7 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
     if (dataDict[@"advertisingInterval"]) {
         NSNumber *interval = dataDict[@"advertisingInterval"];
         if ([interval isKindOfClass:[NSNumber class]]) {
-            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){interval.intValue & 0xFF, (interval.intValue >> 8) & 0xFF} length:2];
+            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(interval.intValue & 0xFF), (uint8_t)((interval.intValue >> 8) & 0xFF)} length:2];
             advertisingData[@"advertisingInterval"] = intervalData;
         }
     }
@@ -393,7 +393,7 @@ RCT_EXPORT_METHOD(getAdvertisingData:(RCTPromiseResolveBlock)resolve
     if (dataDict[@"advertisingIntervalLong"]) {
         NSNumber *interval = dataDict[@"advertisingIntervalLong"];
         if ([interval isKindOfClass:[NSNumber class]]) {
-            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){interval.intValue & 0xFF, (interval.intValue >> 8) & 0xFF, (interval.intValue >> 16) & 0xFF, (interval.intValue >> 24) & 0xFF} length:4];
+            NSData *intervalData = [NSData dataWithBytes:(uint8_t[]){(uint8_t)(interval.intValue & 0xFF), (uint8_t)((interval.intValue >> 8) & 0xFF), (uint8_t)((interval.intValue >> 16) & 0xFF), (uint8_t)((interval.intValue >> 24) & 0xFF)} length:4];
             advertisingData[@"advertisingIntervalLong"] = intervalData;
         }
     }
