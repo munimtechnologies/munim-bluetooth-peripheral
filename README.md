@@ -17,6 +17,9 @@
   <a aria-label="package downloads" href="https://www.npmtrends.com/munim-bluetooth-peripheral" target="_blank">
     <img alt="Downloads" src="https://img.shields.io/npm/dm/munim-bluetooth-peripheral.svg?style=flat-square&labelColor=gray&color=33CC12&label=Downloads" />
   </a>
+  <a aria-label="total package downloads" href="https://www.npmjs.com/package/munim-bluetooth-peripheral" target="_blank">
+    <img alt="Total Downloads" src="https://img.shields.io/npm/dt/munim-bluetooth-peripheral.svg?style=flat-square&labelColor=gray&color=0066CC&label=Total%20Downloads" />
+  </a>
 </p>
 
 <p align="center">
